@@ -2,13 +2,10 @@
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateTeamsTable extends Migration
 {
-    use SoftDeletes;
-
     /**
      * Run the migrations.
      *
@@ -20,7 +17,7 @@ class CreateTeamsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('name');
-            $table->text('bio')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
