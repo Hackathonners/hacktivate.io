@@ -30,7 +30,7 @@ class Team extends Model
    }
 
    /**
-    * Get user who owns this team.
+    * Get users who are on this team.
     *
     * @return \Illuminate\Database\Eloquent\Relations\HasMany
     */
