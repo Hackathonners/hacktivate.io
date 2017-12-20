@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->integer('role_id')->unsigned();
             $table->string('study_level')->nullable();
             $table->string('special_needs')->nullable();
-            $table->string('bio')->nullable();
+            $table->text('bio')->nullable();
             $table->integer('team_id')->nullable()->unsigned();
             $table->integer('owner_team_id')->unsigned()->nullable();
             $table->string('email')->unique();
