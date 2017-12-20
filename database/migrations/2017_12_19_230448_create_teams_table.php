@@ -3,9 +3,13 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class CreateTeamsTable extends Migration
 {
+    use SoftDeletes;
+
     /**
      * Run the migrations.
      *
@@ -19,8 +23,8 @@ class CreateTeamsTable extends Migration
             $table->string('name');
             $table->text('bio')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
-            $this->softDeletes();
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
