@@ -1,0 +1,37 @@
+language: php
+
+services:
+  - postgresql
+
+php:
+  - 7.1
+  - 7.2
+
+sudo: false
+
+cache:
+  directories:
+    - vendor
+    - $HOME/.composer/cache
+
+#before_install:
+#  - phpenv config-rm xdebug.ini
+
+install:
+  - COMPOSER_DISCARD_CHANGES=1 composer install --dev --prefer-source --no-interaction
+
+before_script:
+  - psql -c 'create database hacktivate_testing;' -U postgres
+  - php artisan migrate
+#  - nvm install --lts
+#  - npm install -g yarn
+#  - yarn install
+
+script:
+  - composer ci-test
+#  - npm run production
+  - php artisan migrate:rollback
+
+
+# after_success:
+#  - php vendor/bin/coveralls -v

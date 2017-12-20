@@ -48,7 +48,8 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover"
         ],
-	"test": "phpunit --colors=always",
+        "ci-test": "rm storage/logs/laravel.log 2>/dev/null; phpunit --coverage-text --colors=never; error=$?; if [ $error -ne 0 ]; then grep -B 2 -A 1 '#0' storage/logs/laravel.log 2>/dev/null; fi; exit $error",
+        "test": "phpunit --colors=always",
         "lint": "php-cs-fixer --config=.php_cs fix -vvv"
     },
     "config": {
