@@ -15,13 +15,13 @@ class CreateTeamsTable extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('owner_id')->unisigned();
-            $table->string('team_name')->unique();
-            $table->string('project_name')->unique()->nullable();
+            $table->integer('user_id')->unisigned();
+            $table->string('name');
             $table->text('bio')->nullable();
             $table->timestamps();
 
-            $table->foreign('owner_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
+            $this->softDeletes();
         });
     }
 
