@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('github');
             $table->string('phone_number')->unsigned()->nullable();
-            $table->enum('genre', ['M', 'F', 'Other'])->nullable();
+            $table->enum('gender', ['F', 'M','Other'])->nullable();
             $table->date('birthdate');
             $table->string('dietary_restrictions')->nullable();
             $table->string('school');
