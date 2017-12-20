@@ -11,7 +11,7 @@ class Team extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','bio'];
+    protected $fillable = ['name', 'bio'];
 
     /**
      * Get owner of this team.
