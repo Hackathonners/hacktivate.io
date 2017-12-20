@@ -18,7 +18,8 @@ class Team extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function owner() {
+    public function owner()
+    {
         return $this->belongsTo(User::class);
     }
 
@@ -27,7 +28,8 @@ class Team extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function users() {
+    public function users()
+    {
         return $this->hasMany(User::class);
     }
 }
