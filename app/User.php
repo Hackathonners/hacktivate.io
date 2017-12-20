@@ -54,7 +54,7 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function ownedTeam()
+    public function ownerTeam()
     {
         return $this->hasOne(Team::class);
     }
