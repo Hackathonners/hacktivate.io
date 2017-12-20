@@ -15,7 +15,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'github_handle', 'phone_number', 'genre', 'shirt_size', 'birthdate',
+        'dietary_restrictions', 'school', 'major', 'study_level', 'special_needs',
+        'bio', 'email', 'password',
     ];
 
     /**
@@ -26,4 +28,34 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get team of this user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function team()
+    {
+        return $this->hasOne(Team::class);
+    }
+
+    /**
+     * Get role of this user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function role()
+    {
+        return $this->hasOne(Role::class);
+    }
+
+    /**
+     * Get owned team of this user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function ownedTeam()
+    {
+        return $this->hasOne(Team::class);
+    }
 }
