@@ -1,38 +1,39 @@
+// Font awesome
+$fa-font-path: "/webfonts";
 
 // Body
-$body-bg: #f5f8fa;
+$body-bg: #fff;
 
 // Borders
 $laravel-border-color: darken($body-bg, 10%);
-$list-group-border: $laravel-border-color;
-$navbar-default-border: $laravel-border-color;
-$panel-default-border: $laravel-border-color;
-$panel-inner-border: $laravel-border-color;
+$list-group-border-color: $laravel-border-color;
+
+$card-border-color: $laravel-border-color;
 
 // Brands
-$brand-primary: #3097D1;
-$brand-info: #8eb4cb;
-$brand-success: #2ab27b;
-$brand-warning: #cbb956;
-$brand-danger: #bf5329;
+$primary: #F44747; //#ff9d78;
+$info: #35c1d8;
+$success: #2ab27b;
+$warning: #cbb956;
+$danger: #bf5329;
 
 // Typography
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-$font-family-sans-serif: "Raleway", sans-serif;
-$font-size-base: 14px;
+$font-family-sans-serif: 'Varela Round', 'Helvetica Neue', sans-serif;
 $line-height-base: 1.6;
-$text-color: #636b6f;
-
-// Navbar
-$navbar-default-bg: #fff;
-
-// Buttons
-$btn-default-color: $text-color;
+$text-color: #222222;
+$lead-font-weight: 400;
+$subtitle-font-family: 'Varela Round', $font-family-sans-serif;
 
 // Inputs
-$input-border: lighten($text-color, 40%);
-$input-border-focus: lighten($brand-primary, 25%);
-$input-color-placeholder: lighten($text-color, 30%);
+$input-border-color: lighten($text-color, 40%);
+$input-placeholder-color: lighten($text-color, 30%);
 
-// Panels
-$panel-default-heading-bg: #fff;
+// Navbar
+$navbar-padding-y:                  2rem;
+$navbar-dark-color:                 #fff;
+$navbar-dark-hover-color:           $primary;
+
+// Border
+$border-radius:               .2rem;
+$border-radius-lg:            .25rem;
+$border-radius-sm:            .15rem;

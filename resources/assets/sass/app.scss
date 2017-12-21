@@ -1,9 +1,110 @@
-
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url("https://fonts.googleapis.com/css?family=Varela+Round:400,700|Exo:400,700");
 
 // Variables
 @import "variables";
 
 // Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "~bootstrap/scss/bootstrap";
+
+// Fontawesome
+@import "fontawesome/fa-brands";
+@import "fontawesome/fa-solid";
+@import "fontawesome/fa-regular";
+@import "fontawesome/fontawesome";
+
+@import "components/hero";
+@import "components/section";
+
+.container {
+  max-width: 980px;
+}
+
+// Utils
+.no-background {
+  background: none;
+}
+
+// Navbar
+.hero .navbar {
+  transition: padding .5s ease-in-out, background-color .5s ease-in-out;
+}
+
+.hero .navbar-small {
+  background-image: url('/images/techbg.png');
+  background-color: #20163e;
+  padding: 1rem 1rem;
+  box-shadow: 0 2px 11px rgba(0,0,0,0.3);
+}
+
+.hero .nav-item {
+  text-transform: uppercase;
+}
+
+// About images
+.img-about {
+  filter: grayscale(0.5);
+}
+
+// Buttons
+.btn.call-to-action {
+  font-family: $subtitle-font-family;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.btn-info.call-to-action,
+.btn-outline-info.call-to-action:hover,
+.btn-outline-info.call-to-action:active {
+  color: black;
+}
+
+// Link Lists
+.fa-ul {
+  margin-left: 1.5em;
+}
+
+// Location
+.location .container {
+  width: 100%;
+  padding: 0;
+
+  @media (min-width: 576px) {
+    width: auto;
+    position: relative;
+  }
+
+  .location-details {
+    background-color: white;
+    @media (min-width: 576px) {
+      position: absolute;
+      top: 2rem;
+      z-index: 1;
+    }
+
+    padding: 50px 40px;
+    right: 0;
+  }
+}
+
+// Partners
+.partner {
+  filter: grayscale(200%) brightness(0) contrast(100%);
+  opacity: .4;
+  transition: filter .5s ease-in-out,opacity .5s ease-in-out,-webkit-filter .5s ease-in-out;
+
+  &:hover {
+    filter: grayscale(0);
+    opacity: 1;
+  }
+
+  img {
+    max-height: 3rem;
+    max-width: 200px;
+  }
+}
+
+// Schedule
+.schedule-time {
+  width: 100px;
+}
