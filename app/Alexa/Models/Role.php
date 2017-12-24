@@ -12,6 +12,12 @@ class Role extends Model
      * @var string
      */
     const ROLE_ADMINISTRATOR = 'admin';
+
+    /**
+     * User role type.
+     *
+     * @var string
+     */
     const ROLE_USER = 'user';
 
     /**
@@ -19,7 +25,7 @@ class Role extends Model
      *
      * @var bool
      */
-    public $timetamps = false;
+    public $timestamps = false;
 
     /**
      * Get users with this role.
