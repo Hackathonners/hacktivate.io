@@ -30,7 +30,7 @@ class AddForeignColumnsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['team_id', 'owner_team_id', 'role_id']);
+            $table->dropColumn(['team_id', 'role_id']);
         });
     }
 }
