@@ -20,11 +20,11 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('github');
             $table->string('phone_number')->unsigned()->nullable();
-            $table->enum('gender', ['F', 'M', 'Other']);
-            $table->date('birthdate');
+            $table->enum('gender', ['f', 'm', 'o'])->nullable();
+            $table->date('birthdate')->nullable();
             $table->string('dietary_restrictions')->nullable();
-            $table->string('school');
-            $table->string('major');
+            $table->string('school')->nullable();
+            $table->string('major')->nullable();
             $table->string('study_level')->nullable();
             $table->text('special_needs')->nullable();
             $table->text('bio')->nullable();

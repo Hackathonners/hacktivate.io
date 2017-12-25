@@ -34,19 +34,7 @@
                             <a href="{{ route('login') }}" class="btn btn-outline-info call-to-action">Apply</a>
                         </li>
 					@else
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ Auth::user()->name }}
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                    {{ csrf_field() }}
-                                    <button type="submit" class="dropdown-item">
-                                        Logout
-                                    </button>
-                                </form>
-                            </div>
-                        </li>
+                        @include('_profile_menu')
 					@endguest
 				</ul>
 			</div>
@@ -60,7 +48,8 @@
 				<strong>February 10-11, 2018</strong>
 			</h4>
 			<h5 class="pt-2">Museu Dom Diogo de Sousa, Braga</h5>
-			<a class="hero-action btn btn-outline-info call-to-action mt-4" href="#" role="button">Apply now</a>
+			<a class="hero-action btn btn-outline-info call-to-action mt-4" href="{{ route('login') }}" role="button">Apply now</a>
+			<p class="small text-muted pt-1">with GitHub account</p>
 		</div>
 	</div>
 </div>
