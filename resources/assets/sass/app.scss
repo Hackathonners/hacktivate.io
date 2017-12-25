@@ -16,8 +16,24 @@
 @import "components/hero";
 @import "components/section";
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 .container {
   max-width: 980px;
+}
+
+.hacker-box {
+  margin-bottom: 150px;
+  background-color: #f6f7fb;
+
+  .section-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
 }
 
 // Utils
@@ -26,18 +42,18 @@
 }
 
 // Navbar
-.hero .navbar {
+.navbar {
   transition: padding .5s ease-in-out, background-color .5s ease-in-out;
 }
 
-.hero .navbar-small {
+.navbar-small {
   background-image: url('/images/techbg.png');
   background-color: #20163e;
   padding: 1rem 1rem;
   box-shadow: 0 2px 11px rgba(0,0,0,0.3);
 }
 
-.hero .nav-item {
+.nav-item {
   text-transform: uppercase;
 }
 
