@@ -61,7 +61,7 @@ class GithubLoginController extends Controller
     {
         try {
             $githubUser = Socialite::driver('github')->user();
-            $user = User::whereEmail($githubUser->email)->first();
+            $user = User::whereEmail($githubUser->getEmail())->first();
 
             if (! $user) {
                 $user = $this->create((array) $githubUser);
