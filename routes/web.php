@@ -15,11 +15,8 @@ Route::get('/', function () {
     return view('pages.welcome');
 });
 
-Auth::routes();
+Route::get('login/github', 'Auth\GithubLoginController@redirectToProvider')->name('login');
+Route::get('login/github/callback', 'Auth\GithubLoginController@handleProviderCallback');
+Route::post('logout', 'Auth\GithubLoginController@logout')->name('logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
