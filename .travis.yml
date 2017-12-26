@@ -28,7 +28,7 @@ before_script:
   - yarn install
 
 script:
-  - npm run production
+  - yarn production
   - composer ci-test
   - php artisan migrate:rollback
 
