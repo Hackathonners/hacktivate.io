@@ -19,11 +19,13 @@ class GithubAuthenticationTest extends TestCase
 
     public function test_user_is_created_after_first_login()
     {
-        $githubUser = new \stdClass();
-        $githubUser->name = 'Francisco Neves';
-        $githubUser->email = 'hi@francisconeves.me';
-        $githubUser->nickname = 'fntneves';
-        $githubUser->avatar = 'https://avatar.fake';
+        $githubUser = new \Laravel\Socialite\Two\User();
+        $githubUser->map([
+            'name' => 'Francisco Neves',
+            'email' => 'hi@francisconeves.me',
+            'nickname' => 'fntneves',
+            'avatar' => 'https://avatar.fake',
+        ]);
 
         // Mock Socialite to return mocked user on callback.
         $this->mockSocialiteFacade($githubUser);
@@ -41,9 +43,12 @@ class GithubAuthenticationTest extends TestCase
 
     public function test_no_user_is_created_when_login_exists()
     {
-        $githubUser = factory(User::class)->create();
-        $githubUser->nickname = 'fntneves';
-        $githubUser->avatar = 'https://avatar.fake';
+        $user = factory(User::class)->create();
+        $user->nickname = 'fntneves';
+        $user->avatar = 'https://avatar.fake';
+
+        $githubUser = new \Laravel\Socialite\Two\User();
+        $githubUser->map($user->toArray());
 
         // Mock Socialite to return mocked user on callback.
         $this->mockSocialiteFacade($githubUser);
