@@ -7,6 +7,7 @@ use Socialite;
 use App\Alexa\Models\Role;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Laravel\Socialite\AbstractUser;
 use App\Http\Controllers\Controller;
 use Laravel\Socialite\Two\InvalidStateException;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -61,13 +62,7 @@ class GithubLoginController extends Controller
     {
         try {
             $githubUser = Socialite::driver('github')->user();
-            $user = User::whereEmail($githubUser->getEmail())->first();
-
-            if (! $user) {
-                $user = $this->create((array) $githubUser);
-                // TODO: Send welcome e-mail.
-            }
-
+            $user = $this->findOrCreateUser($githubUser);
             $this->guard()->login($user);
 
             return redirect()->intended($this->redirectPath());
@@ -77,24 +72,28 @@ class GithubLoginController extends Controller
     }
 
     /**
-     * Create a new user instance after a valid Github authentication.
+     * Find or create a new user with provided Github's data.
      *
-     * @param  array  $data
+     * @param  \Laravel\Socialite\AbstractUser  $socialiteUser
      *
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function findOrCreateUser(AbstractUser $socialiteUser)
     {
-        return DB::transaction(function () use ($data) {
-            $user = new User();
-            $user->fill([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'github' => $data['nickname'],
-                'password' => bcrypt(Str::random()),
-            ]);
-            $user->role()->associate(Role::whereType('user')->first());
-            $user->save();
+        return DB::transaction(function () use ($socialiteUser) {
+            $user = User::whereEmail($socialiteUser->getEmail())->first();
+
+            if (! $user) {
+                $user = new User();
+                $user->fill([
+                    'name' => $socialiteUser->getName(),
+                    'email' => $socialiteUser->getEmail(),
+                    'github' => $socialiteUser->getNickname(),
+                    'password' => bcrypt(Str::random()),
+                ]);
+                $user->role()->associate(Role::whereType('user')->first());
+                $user->save();
+            }
 
             return $user;
         });

@@ -19,6 +19,7 @@ class GithubAuthenticationTest extends TestCase
 
     public function test_user_is_created_after_first_login()
     {
+        $this->withoutExceptionHandling();
         $githubUser = new \Laravel\Socialite\Two\User();
         $githubUser->map([
             'name' => 'Francisco Neves',
