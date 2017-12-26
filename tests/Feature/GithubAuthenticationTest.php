@@ -81,7 +81,7 @@ class GithubAuthenticationTest extends TestCase
         $this->assertEquals(0, User::count());
     }
 
-    private function mockSocialiteFacade(object $githubUser)
+    private function mockSocialiteFacade($githubUser)
     {
         $githubProvider = m::mock(\Laravel\Socialite\Two\ProviderInterface::class)
             ->shouldReceive('user')
