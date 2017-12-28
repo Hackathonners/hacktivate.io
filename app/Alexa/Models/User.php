@@ -2,6 +2,7 @@
 
 namespace App\Alexa\Models;
 
+use Illuminate\Support\Arr;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -15,9 +16,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'github', 'phone_number', 'gender', 'shirt_size', 'birthdate',
-        'dietary_restrictions', 'school', 'major', 'study_level', 'special_needs',
-        'bio', 'email', 'password',
+        'name', 'email', 'password', 'avatar', 'github', 'location',
+        'phone_number', 'gender', 'birthdate', 'dietary_restrictions', 'school',
+        'major', 'study_level', 'special_needs', 'bio',
     ];
 
     /**
@@ -57,5 +58,21 @@ class User extends Authenticatable
     public function ownerTeam()
     {
         return $this->hasOne(Team::class);
+    }
+
+    /**
+     * Check if this user has a complete profile.
+     *
+     * @return bool
+     */
+    public function hasCompleteProfile()
+    {
+        $optional = ['dietary_restrictions', 'special_needs'];
+
+        $attributes = array_diff($this->fillable, $optional);
+
+        $filledAttributes = array_filter(Arr::only($this->attributes, $attributes));
+
+        return count($attributes) === count($filledAttributes);
     }
 }

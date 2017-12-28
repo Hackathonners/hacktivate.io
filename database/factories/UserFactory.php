@@ -17,12 +17,24 @@ use Faker\Generator as Faker;
 
 $factory->define(User::class, function (Faker $faker) {
     static $password;
+    $userName = $faker->unique()->userName;
 
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'github' => $faker->unique()->userName,
         'password' => $password ?: $password = bcrypt('secret'),
+        'avatar' => 'http://url.com/'.$userName,
+        'github' => $userName,
+        'location' => $faker->city,
+        'phone_number' => $faker->phoneNumber,
+        'gender' => $faker->randomElement(['f', 'm', 'o']),
+        'birthdate' => $faker->date,
+        'dietary_restrictions' => $faker->text(50),
+        'school' => $faker->numerify('University #'),
+        'major' => $faker->words(4, true),
+        'study_level' => $faker->randomElement(['undergraduate', 'msc', 'phd']),
+        'special_needs' => $faker->words(10, true),
+        'bio' => $faker->text(200),
         'remember_token' => str_random(10),
         'role_id' => function () {
             return Role::inRandomOrder()->first()->id;

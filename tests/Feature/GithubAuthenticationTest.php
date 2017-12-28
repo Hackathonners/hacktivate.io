@@ -25,7 +25,10 @@ class GithubAuthenticationTest extends TestCase
             'name' => 'Francisco Neves',
             'email' => 'hi@francisconeves.me',
             'nickname' => 'fntneves',
-            'avatar' => 'https://avatar.fake',
+            'user' => [
+                'avatar_url' => 'https://avatar.fake',
+                'location' => 'Guimarães, Portugal',
+            ],
         ]);
 
         // Mock Socialite to return mocked user on callback.
@@ -40,16 +43,24 @@ class GithubAuthenticationTest extends TestCase
         $user = User::first();
         $this->assertEquals($githubUser->name, $user->name);
         $this->assertEquals($githubUser->email, $user->email);
+        $this->assertEquals($githubUser->nickname, $user->github);
+        $this->assertEquals($githubUser->user['avatar_url'], $user->avatar);
     }
 
-    public function test_no_user_is_created_when_login_exists()
+    public function test_no_user_is_updated_when_login_exists()
     {
         $user = factory(User::class)->create();
-        $user->nickname = 'fntneves';
-        $user->avatar = 'https://avatar.fake';
 
         $githubUser = new \Laravel\Socialite\Two\User();
-        $githubUser->map($user->toArray());
+        $githubUser->map([
+            'name' => $user->name,
+            'email' => $user->email,
+            'nickname' => 'fntneves_new',
+            'user' => [
+                'avatar_url' => 'https://avatar.fake_new',
+                'location' => 'Guimarães, Portugal',
+            ],
+        ]);
 
         // Mock Socialite to return mocked user on callback.
         $this->mockSocialiteFacade($githubUser);
@@ -63,6 +74,8 @@ class GithubAuthenticationTest extends TestCase
         $user = User::first();
         $this->assertEquals($githubUser->name, $user->name);
         $this->assertEquals($githubUser->email, $user->email);
+        $this->assertEquals($githubUser->nickname, $user->github);
+        $this->assertEquals($githubUser->user['avatar_url'], $user->avatar);
     }
 
     public function test_redirect_on_login_fail()

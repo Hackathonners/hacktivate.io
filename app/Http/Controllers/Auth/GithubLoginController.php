@@ -62,6 +62,8 @@ class GithubLoginController extends Controller
     {
         try {
             $githubUser = Socialite::driver('github')->user();
+            $githubUser->avatar = $githubUser->user['avatar_url'] ?? null;
+
             $user = $this->findOrCreateUser($githubUser);
             $this->guard()->login($user);
 
@@ -81,19 +83,19 @@ class GithubLoginController extends Controller
     protected function findOrCreateUser(AbstractUser $socialiteUser)
     {
         return DB::transaction(function () use ($socialiteUser) {
-            $user = User::whereEmail($socialiteUser->getEmail())->first();
+            $user = User::whereEmail($socialiteUser->getEmail())
+                ->firstOrNew([]);
 
-            if (! $user) {
-                $user = new User();
-                $user->fill([
-                    'name' => $socialiteUser->getName(),
-                    'email' => $socialiteUser->getEmail(),
-                    'github' => $socialiteUser->getNickname(),
-                    'password' => bcrypt(Str::random()),
-                ]);
-                $user->role()->associate(Role::whereType('user')->first());
-                $user->save();
-            }
+            $user->fill([
+                'name' => $socialiteUser->getName(),
+                'email' => $socialiteUser->getEmail(),
+                'github' => $socialiteUser->getNickname(),
+                'avatar' => $socialiteUser->getAvatar(),
+                'location' => $socialiteUser->user['location'] ?? null,
+                'password' => bcrypt(Str::random()),
+            ]);
+            $user->role()->associate(Role::whereType('user')->first());
+            $user->save();
 
             return $user;
         });
