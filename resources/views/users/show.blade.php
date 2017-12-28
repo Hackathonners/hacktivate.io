@@ -2,10 +2,15 @@
 
 @section('content')
 <div class="row">
+
+    {{-- Profile sidebar --}}
     <div class="col-md-3">
         @include('users.shared.sidebar.show')
     </div>
+
+    {{-- User summary --}}
     <div class="col-md-9">
+
         {{-- Application status --}}
         <div class="card mb-4">
             <div class="card-body">
@@ -56,5 +61,6 @@
         {{-- Project team --}}
         @include('teams.shared.card.show')
     </div>
+
 </div>
 @endsection
