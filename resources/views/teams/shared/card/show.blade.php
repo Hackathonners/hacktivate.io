@@ -1,7 +1,16 @@
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
         <h5 class="mb-0"><strong>Your project team</strong></h5>
-        <a href="" class="btn btn-sm btn-light">Edit team</a>
+        <div class="dropdown">
+            <button class="btn btn-sm btn-outline-light border-0 dropdown-toggle text-muted" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="far fa-cog"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Edit Team</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Leave Team</a>
+            </div>
+        </div>
     </div>
     <div class="card-body">
         <h6 class="mb-1 text-info">WARN.inc</h6>

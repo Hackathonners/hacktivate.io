@@ -14,27 +14,30 @@
         {{-- Application status --}}
         <div class="card mb-4">
             <div class="card-body">
-                {{--  @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif  --}}
-                {{--  <div class="media wizard-status-done">
-                    <span class="wizard-step-icon"><i class="icon fa fa-fw fa-times"></i></span>
+
+                @if(Auth::user()->hasCompleteApplication())
+                <div class="media wizard-status-done">
+                    <span class="wizard-step-icon"><i class="icon fa fa-fw fa-check"></i></span>
                     <div class="media-body">
                         <h5 class="wizard-step-title">Your application is complete.</h5>
+                        <p class="small mb-0">You may still change your profile details and move to another team.<br/>Keep in mind that your application remains complete while the conditions below are met.</p>
                     </div>
-                </div>  --}}
+                </div>
+                @else
                 <div class="media wizard-status-undone">
                     <span class="wizard-step-icon"><i class="icon fa fa-fw fa-exclamation-triangle"></i></span>
                     <div class="media-body">
                         <h5 class="wizard-step-title">Your application is not complete yet.</h5>
                     </div>
                 </div>
+                @endif
+
             </div>
             <div class="card-body">
-                <h5 class="mb-4"><strong>Do the following steps to complete your application:</strong></h5>
-                <div class="media mb-3 wizard-step-undone">
+                <h5 class="mb-4"><strong>Do the following to complete your application:</strong></h5>
+
+                {{-- Complete profile --}}
+                <div class="media mb-3 wizard-step-{{ Auth::user()->hasCompleteProfile() ? 'done' : 'undone' }}">
                     <span class="wizard-step-icon"><i class="icon fa fa-fw fa fa-user"></i></span>
                     <div class="media-body">
                         <h6 class="wizard-step-title">Complete your profile</h6>
@@ -44,7 +47,9 @@
                         </p>
                     </div>
                 </div>
-                <div class="media wizard-step-done">
+
+                {{-- Join or create team --}}
+                <div class="media wizard-step-{{ Auth::user()->hasTeam() ? 'done' : 'undone' }}">
                     <span class="wizard-step-icon"><i class="icon fa fa-fw fa-users"></i></span>
                     <div class="media-body">
                         <h6 class="wizard-step-title">Join or create a team</h6>

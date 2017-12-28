@@ -75,4 +75,24 @@ class User extends Authenticatable
 
         return count($attributes) === count($filledAttributes);
     }
+
+    /**
+     * Check if this user has a team.
+     *
+     * @return bool
+     */
+    public function hasTeam()
+    {
+        return $this->team_id != null;
+    }
+
+    /**
+     * Check if this user completed the application.
+     *
+     * @return bool
+     */
+    public function hasCompleteApplication()
+    {
+        return $this->hasCompleteProfile() && $this->hasTeam();
+    }
 }
