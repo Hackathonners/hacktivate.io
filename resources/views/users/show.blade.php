@@ -33,7 +33,7 @@
                     <span class="wizard-step-icon"><i class="icon fa fa-fw fa fa-user"></i></span>
                     <div class="media-body">
                         <h6 class="wizard-step-title">Complete your profile</h6>
-                        <p class="mb-0">A complete profile gives you a better chance to be accepted.
+                        <p class="mb-0">A complete profile improves your chance to be accepted.
                             <br/>
                             <span class="small"><a href="" class="text-muted"><u>Edit your profile</u></a> and provide the most information as possible.</span>
                         </p>
