@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
-use App\Alexa\Models\User;
 use Mockery as m;
 use Tests\TestCase;
+use App\Alexa\Models\User;
 use Laravel\Socialite\Facades\Socialite;
 
 class GithubAuthenticationTest extends TestCase

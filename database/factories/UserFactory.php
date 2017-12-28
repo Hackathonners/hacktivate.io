@@ -1,7 +1,7 @@
 <?php
 
-use App\Alexa\Models\User;
 use App\Alexa\Models\Role;
+use App\Alexa\Models\User;
 use Faker\Generator as Faker;
 
 /*

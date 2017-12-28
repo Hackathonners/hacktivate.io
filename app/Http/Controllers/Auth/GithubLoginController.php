@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Alexa\Models\User;
 use Socialite;
 use App\Alexa\Models\Role;
+use App\Alexa\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Laravel\Socialite\AbstractUser;
