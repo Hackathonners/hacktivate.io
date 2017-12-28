@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Alexa\Models\User;
 use Socialite;
 use App\Alexa\Models\Role;
 use Illuminate\Support\Str;
@@ -76,7 +76,7 @@ class GithubLoginController extends Controller
      *
      * @param  \Laravel\Socialite\AbstractUser  $socialiteUser
      *
-     * @return \App\User
+     * @return \App\Alexa\Models\User
      */
     protected function findOrCreateUser(AbstractUser $socialiteUser)
     {

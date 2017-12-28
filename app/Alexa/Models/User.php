@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Alexa\Models;
 
 use App\Alexa\Models\Role;
 use App\Alexa\Models\Team;
