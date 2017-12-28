@@ -1,4 +1,4 @@
-<div class="py-5 section-footer text-light">
+<div class="py-4 section-footer">
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-4 text-center text-sm-right d-block d-sm-none">

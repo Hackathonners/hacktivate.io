@@ -13,8 +13,15 @@
 @import "fontawesome/fa-regular";
 @import "fontawesome/fontawesome";
 
+// Global
+@import "global";
+
+// Components
+@import "components/grid";
+@import "components/card";
 @import "components/hero";
 @import "components/section";
+@import "components/wizard";
 
 html {
   position: relative;
@@ -26,13 +33,16 @@ html {
 }
 
 .hacker-box {
-  margin-bottom: 150px;
-  background-color: #f6f7fb;
+  margin-bottom: 105px;
 
   .section-footer {
     position: absolute;
     bottom: 0;
     width: 100%;
+  }
+
+  .navbar-small {
+    box-shadow: none;
   }
 }
 
@@ -49,7 +59,7 @@ html {
 .navbar-small {
   background-image: url('/images/techbg.png');
   background-color: #20163e;
-  padding: 1rem 1rem;
+  padding: .75rem;
   box-shadow: 0 2px 11px rgba(0,0,0,0.3);
 }
 
@@ -127,15 +137,4 @@ html {
 // Schedule
 .schedule-time {
   width: 100px;
-}
-
-// Cards
-.card {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07)
-}
-
-.card,
-.card-header,
-.card-footer {
-  border: none
 }

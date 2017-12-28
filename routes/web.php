@@ -19,4 +19,4 @@ Route::get('login/github', 'Auth\GithubLoginController@redirectToProvider')->nam
 Route::get('login/github/callback', 'Auth\GithubLoginController@handleProviderCallback');
 Route::post('logout', 'Auth\GithubLoginController@logout')->name('logout');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profile', 'UsersController@show')->name('home');

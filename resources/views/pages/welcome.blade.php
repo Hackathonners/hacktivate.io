@@ -19,14 +19,6 @@
 			<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a href="{{ route('login') }}" class="nav-link mr-2">Mentors</a>
-					</li>
-					{{--
-					<li class="nav-item">
-						<a href="{{ route('login') }}" class="nav-link">Regulation</a>
-					</li>
-					--}}
-					<li class="nav-item">
 						<a href="{{ route('login') }}" class="nav-link mr-2">Code of conduct</a>
 					</li>
 					@guest

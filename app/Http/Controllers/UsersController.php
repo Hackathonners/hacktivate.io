@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class HomeController extends Controller
+class UsersController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -19,8 +19,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function show()
     {
-        return view('home');
+        return view('users.show');
     }
 }

@@ -1,0 +1,36 @@
+.wizard-step-title
+  font-weight: 700
+  margin-top: .4rem
+  margin-bottom: .2rem
+.wizard-step-icon
+  padding: .2rem .4rem
+  border: 2px solid $body-color
+  margin-right: 1rem
+  border-radius: 3px
+  background-color: $body-color
+  color: white
+
+  .icon
+    vertical-align: -10%
+
+.wizard-step-done,
+.status-done
+  .wizard-step-title
+    color: $success
+
+  .wizard-step-icon
+    border-color: $success
+    background-color: $success
+    color: white
+    .icon::before
+      content: '\f00c'
+
+.wizard-status-undone
+  .wizard-step-title,
+  .wizard-step-icon
+    color: $warning
+
+  .wizard-step-icon
+    color: white
+    background-color: $warning
+    border-color: $warning

@@ -4,12 +4,13 @@ $fa-font-path: "/webfonts";
 // Body
 $body-bg: #fff;
 $black: #495057;
+$body-color: $black;
 
 // Brands
 $primary: #F44747; //#ff9d78;
-$info: #35c1d8;
+$info: #26b0c7;
 $success: #2ab27b;
-$warning: #cbb956;
+$warning: #efb037;
 $danger: #bf5329;
 
 // Typography
@@ -17,11 +18,8 @@ $font-family-sans-serif: 'Varela Round', 'Helvetica Neue', sans-serif;
 $line-height-base: 1.6;
 $text-color: #222222;
 $lead-font-weight: 400;
-$subtitle-font-family: 'Varela Round', $font-family-sans-serif;
-
-// Inputs
-$input-border-color: lighten($text-color, 40%);
-$input-placeholder-color: lighten($text-color, 30%);
+$subtitle-font-family: $font-family-sans-serif;
+$small-font-size: 85%;
 
 // Navbar
 $navbar-padding-y:                  2rem;
