@@ -35,4 +35,16 @@ class Team extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    /**
+     * Check if the given user owns this team.
+     *
+     * @param  \App\Alexa\Models\User  $user
+     *
+     * @return bool
+     */
+    public function isOwner(User $user)
+    {
+        return $this->user_id === $user->id;
+    }
 }

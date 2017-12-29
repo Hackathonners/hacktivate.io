@@ -64,7 +64,9 @@
         </div>
 
         {{-- Project team --}}
-        @include('teams.shared.card.show')
+        @if(Auth::user()->hasTeam())
+            @include('teams.shared.card.show', ['team' => Auth::user()->team])
+        @endif
     </div>
 
 </div>

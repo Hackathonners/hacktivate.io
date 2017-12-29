@@ -23,8 +23,8 @@ $factory->define(User::class, function (Faker $faker) {
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
-        'avatar' => 'http://url.com/'.$userName,
-        'github' => $userName,
+        'avatar' => 'https://avatars3.githubusercontent.com/u/'.$faker->randomNumber,
+        'github' => $faker->unique()->userName,
         'location' => $faker->city,
         'phone_number' => $faker->phoneNumber,
         'gender' => $faker->randomElement(['f', 'm', 'o']),
@@ -38,6 +38,14 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
         'role_id' => function () {
             return Role::inRandomOrder()->first()->id;
+        },
+    ];
+});
+
+$factory->state(User::class, 'with-team', function (\Faker\Generator $faker) {
+    return [
+        'team_id' => function () {
+            return factory(Team::class)->create()->id;
         },
     ];
 });
