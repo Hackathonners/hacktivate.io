@@ -5,25 +5,64 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\User\UpdateRequest;
+use App\Alexa\Models\User;
+use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * Display a listing of the resource.
      *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
+     * @param  \Illuminate\Http\Request  $request
      *
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function index(Request $request)
+    {
+        $request->ajax() ?: abort(404);
+
+        $search = $request->get('query');
+        $users = User::query();
+
+        if ($search) {
+            $users = User::where('id', '!=', auth()->id())
+                ->filterByEmailOrNickname($search)
+                ->withoutTeam();
+        }
+
+        return $users->paginate();
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id = null)
     {
         return view('users.show');
     }
