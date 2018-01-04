@@ -43,7 +43,7 @@
                         <h6 class="wizard-step-title">Complete your profile</h6>
                         <p class="mb-0">A complete profile improves your chance to be accepted.
                             <br/>
-                            <span class="small"><a href="" class="text-muted"><u>Edit your profile</u></a> and provide the most information as possible.</span>
+                            <span class="small"><a href="{{ route('users.edit') }}" class="text-muted"><u>Edit your profile</u></a> and provide the most information as possible.</span>
                         </p>
                     </div>
                 </div>
