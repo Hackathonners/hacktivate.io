@@ -5,10 +5,17 @@
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
         <a href="{{ route('home') }}" class="dropdown-item">Your profile</a>
         <a href="{{ route('home') }}" class="dropdown-item">Your team</a>
+
         <div class="dropdown-divider"></div>
+        
         <a href="{{ route('users.edit') }}" class="dropdown-item">Edit profile</a>
+        @if(Auth::user()->role->isAdmin())
+            <a href="{{ route('settings.edit') }}" class="dropdown-item">Application settings</a>            
+        @endif
+        
         <div class="dropdown-divider"></div>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+        
+       <form id="logout-form" action="{{ route('logout') }}" method="POST">
             {{ csrf_field() }}
             <button type="submit" class="dropdown-item">
                 Logout
