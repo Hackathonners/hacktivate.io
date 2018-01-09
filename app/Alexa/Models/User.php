@@ -31,23 +31,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * Save the model to the database.
-     *
-     * @param  array  $options
-     *
-     * @return bool
-     */
-    public function save(array $options = [])
-    {
-        if (is_null($this->role)) {
-            $userRole = Role::whereType(Role::ROLE_USER)->first();
-            $this->role()->associate($userRole);
-        }
-
-        return parent::save($options);
-    }
-
-    /**
      * Get team of this user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use Socialite;
+use App\Alexa\Models\Role;
 use App\Alexa\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -93,6 +94,11 @@ class GithubLoginController extends Controller
                 'location' => $socialiteUser->user['location'] ?? null,
                 'password' => bcrypt(Str::random()),
             ]);
+
+            if (is_null($user->role)) {
+                $userRole = Role::whereType(Role::ROLE_USER)->first();
+                $user->role()->associate($userRole);
+            }
 
             $user->save();
 
