@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use App\Alexa\Models\Settings;
 use Illuminate\Database\Seeder;
 
@@ -10,6 +11,8 @@ class SettingsTableSeeder extends Seeder
      */
     public function run()
     {
-        Settings::create();
+        Settings::create([
+            'projects_submission_start_at' => Carbon::now(),
+        ]);
     }
 }
