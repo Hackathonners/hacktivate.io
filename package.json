@@ -19,7 +19,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "lodash.debounce": "^4.5.0",
+        "lodash.debounce": "^4.0.8",
         "v-click-outside": "^1.0.2",
         "vue-global-events": "^1.0.2"
     }
