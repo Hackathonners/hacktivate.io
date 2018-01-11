@@ -31,11 +31,12 @@ class UpdateRequest extends FormRequest
             'phone_number' => 'string',
             'gender' => Rule::in(['f', 'm', 'o']),
             'birthdate' => 'required|date|before:'.$minimum_date,
-            'dietary_restrictions' => 'required|string|min:0|max:255',
+            'phone_number' => 'regex:/(\+(\d{3}))?\d{9}/',
+            'dietary_restrictions' => 'string|min:0|max:255',
             'school' => 'required|string',
             'major' => 'required|string',
             'study_level' => 'required|string',
-            'special_needs' => 'required|string|min:0|max:255',
+            'special_needs' => 'string|min:0|max:255',
             'bio' => 'required|string|min:0|max:255',
         ];
     }

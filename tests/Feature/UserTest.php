@@ -14,11 +14,10 @@ class UserTest extends TestCase
     {
         parent::setUp();
 
-        $birthdate = Carbon::now()->subYears(30)->toDateString();
         $this->user = factory(User::class)->create([
             'phone_number' => null,
             'gender' => 'o',
-            'birthdate' => $birthdate,
+            'birthdate' => Carbon::now()->subYears(30)->toDateString(),
             'dietary_restrictions' => null,
             'school' => null,
             'major' => null,
@@ -28,15 +27,13 @@ class UserTest extends TestCase
         ]);
     }
 
-    public function testUserCanEditHisProfile()
+    public function test_user_can_edit_his_profile()
     {
         // Prepare
-        $birthdate = Carbon::now()->subYears(20)->toDateString();
-
         $requestData = [
             'phone_number' => '915524851',
             'gender' => 'm',
-            'birthdate' => $birthdate,
+            'birthdate' => Carbon::now()->subYears(20)->toDateString(),
             'dietary_restrictions' => 'Don\'t have any dietary restrictions',
             'school' => 'University of Minho',
             'major' => 'Informatics',
@@ -55,15 +52,13 @@ class UserTest extends TestCase
         $this->assertUserWasUpdated($requestData);
     }
 
-    public function testAnUnderAgeUserCanNotEditHisProfile()
+    public function test_an_under_age_user_can_not_edit_his_profile()
     {
         // Prepare
-        $birthdate = Carbon::now()->subYears(15)->toDateString();
-
         $requestData = [
             'phone_number' => '915524851',
             'gender' => 'm',
-            'birthdate' => $birthdate,
+            'birthdate' => Carbon::now()->subYears(15)->toDateString(),
             'dietary_restrictions' => 'Don\'t have any dietary restrictions',
             'school' => 'University of Minho',
             'major' => 'Informatics',

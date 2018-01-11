@@ -8,12 +8,11 @@
     </div>
 
     <div class="col-md-8 off-set-2">
-        {{-- @include('layouts.shared.status') --}}
 
         <div class="card">
             <div class="card-header">
                 <h4 class="text-primary">Edit profile</h4>
-                <p class="mb-0">This information will be used to now a little bit more.</p>
+                <p class="mb-0">This information will be used to know if you are really a hacker for the hackathon.</p>
             </div>
             <form class="form" method="POST" action="{{ route('users.update') }}">
                 <div class="card-body">
@@ -23,7 +22,7 @@
                     <h5 class="text-primary mb-2">Account details</h5>
 
                     <div class="form-group mb-4">
-                        <label for="phone_number">Phone Number</label>
+                        <label for="phone_number">Mobile phone</label>
                         <input id="phone_number" type='tel' class="form-control {{ $errors->has('phone_number') ? 'is-invalid' : '' }}" name="phone_number" value="{{ old('phone_number', $user->phone_number) }}" 
                         pattern='(\+(\d{3}))?\d{9}' required>
 
@@ -47,6 +46,7 @@
 
                     <div class="form-group mb-4">
                         <label for="gender">Gender</label>
+
                         <select id="gender" name="gender" class="custom-select form-control {{ $errors->has('gender') ? 'is-invalid' : '' }}" required>
                             <option {{ old('gender', $user->gender) ? '' : 'selected' }}> Choose...</option>
                             <option value="m" {{ old('gender', $user->gender) === 'm' ? 'selected' : '' }}>Male</option>
@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="form-group mb-4">
-                        <label for="description">Bio</label>
+                        <label for="bio">Bio</label>
 
                         <textarea id="bio" class="form-control {{ $errors->has('bio') ? 'is-invalid' : '' }}" name="bio" rows="4" required>{{ old('bio', $user->bio) }}</textarea>
 
@@ -109,9 +109,9 @@
 
                     <h5 class="text-primary mb-2">Other details</h5>
                     <div class="form-group mb-4">
-                        <label for="description">Dietary Restrictions</label>
+                        <label for="dietary_restrictions">Dietary Restrictions</label>
 
-                        <textarea id="dietary_restrictions" class="form-control {{ $errors->has('dietary_restrictions') ? 'is-invalid' : '' }}" name="dietary_restrictions" rows="4" required>{{ old('dietary_restrictions', $user->dietary_restrictions) }}</textarea>
+                        <textarea id="dietary_restrictions" class="form-control {{ $errors->has('dietary_restrictions') ? 'is-invalid' : '' }}" name="dietary_restrictions" rows="4">{{ old('dietary_restrictions', $user->dietary_restrictions) }}</textarea>
 
                         @if ($errors->has('dietary_restrictions'))
                             <span class="invalid-feedback">
@@ -121,9 +121,9 @@
                     </div>
 
                     <div class="form-group mb-4">
-                        <label for="description">Special Needs</label>
+                        <label for="special_needs">Special Needs</label>
 
-                        <textarea id="special_needs" class="form-control {{ $errors->has('special_needs') ? 'is-invalid' : '' }}" name="special_needs" rows="4" required>{{ old('special_needs', $user->special_needs) }}</textarea>
+                        <textarea id="special_needs" class="form-control {{ $errors->has('special_needs') ? 'is-invalid' : '' }}" name="special_needs" rows="4">{{ old('special_needs', $user->special_needs) }}</textarea>
 
                         @if ($errors->has('special_needs'))
                             <span class="invalid-feedback">

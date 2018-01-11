@@ -43,7 +43,7 @@ class UsersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\Profile\UpdateRequest $request
+     * @param \App\Http\Requests\User\UpdateRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -55,8 +55,6 @@ class UsersController extends Controller
             $user->save();
         });
 
-        // flash('Profile was successfully updated.')->success();
-
-        return redirect()->route('users.edit')->with('status', 'Profile was successfully updated.');
+        return redirect()->route('users.edit')->with('status', 'Your profile was successfully updated.');
     }
 }
