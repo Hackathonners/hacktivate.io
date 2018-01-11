@@ -123,7 +123,7 @@ class GithubAuthenticationTest extends TestCase
         $this->assertEquals($userType, $user->role->type);
     }
 
-    public function test_admin_role_is_not_override_on_login()
+    public function test_admin_role_is_not_overridden_on_login()
     {
         $this->withoutExceptionHandling();
         factory(User::class)->states('admin')->create([

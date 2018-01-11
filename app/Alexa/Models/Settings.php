@@ -12,10 +12,10 @@ class Settings extends Model
      * @var array
      */
     protected $fillable = [
-        'projects_submission_start_at',
-        'projects_submission_end_at',
-        'min_members_team',
-        'max_members_team',
+        'applications_start_at',
+        'applications_end_at',
+        'min_team_members',
+        'max_team_members',
     ];
 
     /**
@@ -24,21 +24,21 @@ class Settings extends Model
      * @var array
      */
     protected $dates = [
-        'applications_submission_start_at',
-        'applications_submission_end_at',
+        'applications_start_at',
+        'applications_end_at',
     ];
 
     /**
-     * Checks whether today's date is within the submitting projects period.
+     * Checks whether today's date is within the projects submission period.
      *
      * @return bool
      */
-    public function withinSubmittingPeriod(): bool
+    public function withinProjectsSubmissionPeriod(): bool
     {
-        if (is_null($this->projects_submission_start_at) || is_null($this->projects_submission_end_at)) {
+        if (is_null($this->applications_start_at) || is_null($this->applications_end_at)) {
             return false;
         }
 
-        return $this->projects_submission_start_at->isPast() && ! $this->projects_submission_end_at->isPast();
+        return $this->applications_start_at->isPast() && ! $this->applications_end_at->isPast();
     }
 }

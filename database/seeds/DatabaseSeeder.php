@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         DB::transaction(function () {
             $this->call(RolesTableSeeder::class);
             $this->call(SettingsTableSeeder::class);
+
             // Only run the seeders registered here when we are in production,
             // otherwise keep it clean or it would somehow intefer with the
             // tests scenario preparation since data is stored in database.

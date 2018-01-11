@@ -25,19 +25,9 @@ class AppServiceProvider extends ServiceProvider
          * @return bool
          */
         Validator::extend('max_field', function ($attribute, $value, $parameters, $validator) {
-            if (count($parameters) === 1) {
-                if (is_numeric($parameters[0])) {
-                    return $validator->validateMax($attribute, $value, $parameters);
-                } elseif (is_string($parameters[0])) {
-                    $data = $validator->getData();
-                    $parametersValue = $data[$parameters[0]];
-                    if (! is_null($parametersValue)) {
-                        return $validator->validateMax($attribute, $value, [$parametersValue]);
-                    }
-                }
-            }
-
-            return false;
+            return is_string($parameters[0])
+                ? $validator->validateMax($attribute, $value, [$validator->getData()[$parameters[0]]])
+                : $validator->validateMax($attribute, $value, $parameters[0]);
         });
 
         /*
@@ -50,19 +40,9 @@ class AppServiceProvider extends ServiceProvider
          * @return bool
          */
         Validator::extend('min_field', function ($attribute, $value, $parameters, $validator) {
-            if (count($parameters) === 1) {
-                if (is_numeric($parameters[0])) {
-                    return $validator->validateMin($attribute, $value, $parameters);
-                } elseif (is_string($parameters[0])) {
-                    $data = $validator->getData();
-                    $parametersValue = $data[$parameters[0]];
-                    if (! is_null($parametersValue)) {
-                        return $validator->validateMin($attribute, $value, [$parametersValue]);
-                    }
-                }
-            }
-
-            return false;
+            return is_string($parameters[0])
+                ? $validator->validateMin($attribute, $value, [$validator->getData()[$parameters[0]]])
+                : $validator->validateMin($attribute, $value, $parameters[0]);
         });
     }
 

@@ -13,11 +13,11 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $admins = [
-          [
-            'name' => 'Diogo Couto',
-            'email' => 'diogo2couto@gmail.com',
-            'github' => 'djcouto',
-          ],
+                [
+                  'name' => 'Diogo Couto',
+                  'email' => 'diogo2couto@gmail.com',
+                  'github' => 'djcouto',
+                ],
         ];
 
         $adminRole = Role::whereType(Role::ROLE_ADMINISTRATOR)->first();

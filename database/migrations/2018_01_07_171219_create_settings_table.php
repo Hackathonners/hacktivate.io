@@ -15,10 +15,10 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('min_members_team')->nullable();
-            $table->integer('max_members_team')->nullable();
-            $table->timestamp('projects_submission_start_at')->nullable();
-            $table->timestamp('projects_submission_end_at')->nullable();
+            $table->integer('min_team_members')->nullable();
+            $table->integer('max_team_members')->nullable();
+            $table->timestamp('applications_start_at')->nullable();
+            $table->timestamp('applications_end_at')->nullable();
             $table->timestamps();
         });
     }

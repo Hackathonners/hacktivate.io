@@ -10,7 +10,8 @@
         
         <a href="{{ route('users.edit') }}" class="dropdown-item">Edit profile</a>
         @if(Auth::user()->role->isAdmin())
-            <a href="{{ route('settings.edit') }}" class="dropdown-item">Application settings</a>            
+            <a href="{{ route('settings.edit') }}" class="dropdown-item">Edit settings</a>            
+            <div class="dropdown-divider"></div>
         @endif
         
         <div class="dropdown-divider"></div>

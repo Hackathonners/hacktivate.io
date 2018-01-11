@@ -95,7 +95,7 @@ class GithubLoginController extends Controller
                 'password' => bcrypt(Str::random()),
             ]);
 
-            if (is_null($user->role)) {
+            if (! $user->hasRole()) {
                 $userRole = Role::whereType(Role::ROLE_USER)->first();
                 $user->role()->associate($userRole);
             }

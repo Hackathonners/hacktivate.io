@@ -36,9 +36,7 @@ $factory->define(User::class, function (Faker $faker) {
         'bio' => $faker->text(200),
         'remember_token' => str_random(10),
         'role_id' => function () {
-            $userType = Role::ROLE_USER;
-
-            return Role::whereType($userType)->first()->id;
+            return Role::whereType(Role::ROLE_USER)->first()->id;
         },
     ];
 });
@@ -46,9 +44,7 @@ $factory->define(User::class, function (Faker $faker) {
 $factory->state(User::class, 'admin', function (\Faker\Generator $faker) {
     return [
         'role_id' => function () {
-            $adminType = Role::ROLE_ADMINISTRATOR;
-
-            return Role::whereType($adminType)->first()->id;
+            return Role::whereType(Role::ROLE_ADMINISTRATOR)->first()->id;
         },
     ];
 });

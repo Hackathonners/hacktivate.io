@@ -11,42 +11,42 @@ class SettingsTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testSubmittingPeriodIsActive()
+    public function testProjectsSubmissionPeriodIsActive()
     {
         // Prepare
         $settings = new Settings();
 
         // Execute
-        $settings->projects_submission_start_at = Carbon::yesterday();
-        $settings->projects_submission_end_at = Carbon::tomorrow();
+        $settings->applications_start_at = Carbon::yesterday();
+        $settings->applications_end_at = Carbon::tomorrow();
 
         //Assert
-        $this->assertTrue($settings->withinSubmittingPeriod());
+        $this->assertTrue($settings->withinProjectsSubmissionPeriod());
     }
 
-    public function testSubmittingPeriodIsNotActive()
+    public function testProjectsSubmissionPeriodIsNotActive()
     {
         // Prepare
         $settings = new Settings();
 
         // Execute
-        $settings->projects_submission_start_at = Carbon::tomorrow();
-        $settings->projects_submission_end_at = Carbon::tomorrow()->addDays(2);
+        $settings->applications_start_at = Carbon::tomorrow();
+        $settings->applications_end_at = Carbon::tomorrow()->addDays(2);
 
         // Assert
-        $this->assertFalse($settings->withinSubmittingPeriod());
+        $this->assertFalse($settings->withinProjectsSubmissionPeriod());
     }
 
-    public function testSubmittingPeriodExpired()
+    public function testProjectsSubmissionHasExpired()
     {
         // Prepare
         $settings = new Settings();
 
         // Execute
-        $settings->projects_submission_start_at = Carbon::yesterday()->subDays(2);
-        $settings->projects_submission_end_at = Carbon::yesterday();
+        $settings->applications_start_at = Carbon::yesterday()->subDays(2);
+        $settings->applications_end_at = Carbon::yesterday();
 
         // Assert
-        $this->assertFalse($settings->withinSubmittingPeriod());
+        $this->assertFalse($settings->withinProjectsSubmissionPeriod());
     }
 }

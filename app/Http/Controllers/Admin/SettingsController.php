@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use App\Alexa\Models\Settings;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -29,18 +30,12 @@ class SettingsController extends Controller
     public function update(UpdateRequest $request)
     {
         DB::transaction(function () use ($request) {
-            if ($request->has('projects_submission_start_at')) {
-                $minimum_date = $request->input('projects_submission_start_at');
-            } else {
-                $minimum_date = app('settings')->projects_submission_start_at;
-            }
-            $this->validate($request, [
-                'projects_submission_end_at' => 'after:'.$minimum_date,
-            ]);
+            $updateFields = $request->all();
+            $updateFields['applications_start_at'] = Carbon::parse($updateFields['applications_start_at']);
+            $updateFields['applications_end_at'] = Carbon::parse($updateFields['applications_end_at']);
 
-            app('settings')->update($request->all());
+            app('settings')->update($updateFields);
         });
-        // flash('Settings were successfully updated.')->success();
 
         return redirect()->route('settings.edit')->with('status', 'Settings were successfully updated.');
     }
