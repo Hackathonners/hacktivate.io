@@ -26,7 +26,7 @@
 
                     <div class="form-group">
                         <label for="name">Project name</label>
-                        <input id="name" type="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                        <input id="name" type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
                         @if ($errors->has('name'))
                             <span class="invalid-feedback">
@@ -45,19 +45,6 @@
                             </span>
                         @endif
                     </div>
-
-                    {{--  <h5 class="text-primary mb-2">Project members</h5>
-                    <p class="mb-2"><strong>Invite from 1 to 3 members</strong> to be part of your team.</p>
-                    @if ($errors->has('members.*.github'))
-                        <div class="alert alert-danger">
-                        @foreach (array_flatten($errors->get('members.*.github')) as $error)
-                            <div>{{ $error }}</div>
-                        @endforeach
-                        </div>
-                    @endif
-                    <div class="form-group">
-                        <team-members :members="[]"></team-members>
-                    </div>  --}}
 
                     <button type="submit" class="btn btn-primary">
                         Create team

@@ -17,7 +17,7 @@
 
                     <div class="form-group">
                         <label for="name">Project name</label>
-                        <input id="name" type="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" name="name" value="{{ old('name', $team->name) }}" required autofocus>
+                        <input id="name" type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" name="name" value="{{ old('name', $team->name) }}" required autofocus>
 
                         @if ($errors->has('name'))
                             <span class="invalid-feedback">

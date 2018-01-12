@@ -116,11 +116,5 @@
                     .then(() => this.loadingIndexes.splice(loadingIndex, 1));
             },
         },
-        watch: {
-            // searchQuery() {
-            //     this.searchResults = [];
-            //     this.getRemoteResults();
-            // },
-        }
     }
 </script>

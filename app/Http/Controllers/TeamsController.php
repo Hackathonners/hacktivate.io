@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Alexa\Models\Team;
-use App\Http\Requests\TeamRequest;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\Team\CreateRequest;
 
 class TeamsController extends Controller
 {
@@ -31,11 +31,11 @@ class TeamsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\TeamRequest  $request
+     * @param  \App\Http\Requests\Team\CreateRequest  $request
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(TeamRequest $request)
+    public function store(CreateRequest $request)
     {
         $team = DB::transaction(function () use ($request) {
             $user = auth()->user();
@@ -73,12 +73,12 @@ class TeamsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\TeamRequest  $request
+     * @param  \App\Http\Requests\Team\CreateRequest  $request
      * @param  int  $id
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(TeamRequest $request, $id)
+    public function update(CreateRequest $request, $id)
     {
         DB::transaction(function () use ($request, $id) {
             $team = auth()->user()->ownerTeam()->findOrFail($id);

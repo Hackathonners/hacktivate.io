@@ -103,9 +103,6 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
-        'members.*.github' => [
-            'exists' => 'The selected member :value is invalid.',
-        ],
     ],
 
     /*
