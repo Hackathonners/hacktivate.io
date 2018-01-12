@@ -28,16 +28,15 @@ class UpdateRequest extends FormRequest
         $minimum_date = Carbon::now()->subYears(18)->toDateString();
 
         return [
-            'phone_number' => 'string',
             'gender' => Rule::in(['f', 'm', 'o']),
             'birthdate' => 'required|date|before:'.$minimum_date,
-            'phone_number' => 'regex:/(\+(\d{3}))?\d{9}/',
-            'dietary_restrictions' => 'string|min:0|max:255',
+            'phone_number' => ['required', 'string', 'regex:/(\+(\d{3}))?\d{9}/'],
             'school' => 'required|string',
             'major' => 'required|string',
             'study_level' => 'required|string',
-            'special_needs' => 'string|min:0|max:255',
             'bio' => 'required|string|min:0|max:255',
+            'special_needs' => 'string|min:0|max:255',
+            'dietary_restrictions' => 'string|min:0|max:255',
         ];
     }
 }

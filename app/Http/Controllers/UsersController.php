@@ -25,7 +25,7 @@ class UsersController extends Controller
      */
     public function show()
     {
-        return view('home');
+        return view('users.show');
     }
 
     /**
