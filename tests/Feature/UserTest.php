@@ -99,15 +99,15 @@ class UserTest extends TestCase
      */
     protected function assertUserWasNotUpdated(array $data)
     {
-        $this->user->refresh();
-        $this->assertNotEquals($data['gender'], $this->user->gender);
-        $this->assertNotEquals($data['birthdate'], $this->user->birthdate);
-        $this->assertNull($this->user->phone_number);
-        $this->assertNull($this->user->dietary_restrictions);
-        $this->assertNull($this->user->school);
-        $this->assertNull($this->user->major);
-        $this->assertNull($this->user->study_level);
-        $this->assertNull($this->user->special_needs);
-        $this->assertNull($this->user->bio);
+        $user = $this->user->fresh();
+        $this->assertEquals($user->phone_number, $this->user->phone_number);
+        $this->assertEquals($user->gender, $this->user->gender);
+        $this->assertEquals($user->birthdate, $this->user->birthdate);
+        $this->assertEquals($user->dietary_restrictions, $this->user->dietary_restrictions);
+        $this->assertEquals($user->school, $this->user->school);
+        $this->assertEquals($user->major, $this->user->major);
+        $this->assertEquals($user->study_level, $this->user->study_level);
+        $this->assertEquals($user->special_needs, $this->user->special_needs);
+        $this->assertEquals($user->bio, $this->user->bio);
     }
 }
