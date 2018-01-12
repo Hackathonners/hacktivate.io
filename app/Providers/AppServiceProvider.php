@@ -13,6 +13,8 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    private $customAttributes = [];
+
     public function boot()
     {
         /*
@@ -25,9 +27,17 @@ class AppServiceProvider extends ServiceProvider
          * @return bool
          */
         Validator::extend('max_field', function ($attribute, $value, $parameters, $validator) {
+            $this->customAttributes = $validator->customAttributes ?? [];
+
             return is_string($parameters[0])
                 ? $validator->validateMax($attribute, $value, [$validator->getData()[$parameters[0]]])
                 : $validator->validateMax($attribute, $value, $parameters[0]);
+        });
+
+        Validator::replacer('max_field', function ($message, $attribute, $rule, $parameters) {
+            $attributeName = $this->customAttributes[$parameters[0]] ?? $parameters[0];
+
+            return str_replace(':max_field', $attributeName, $message);
         });
 
         /*
@@ -40,9 +50,17 @@ class AppServiceProvider extends ServiceProvider
          * @return bool
          */
         Validator::extend('min_field', function ($attribute, $value, $parameters, $validator) {
+            $this->customAttributes = $validator->customAttributes ?? [];
+
             return is_string($parameters[0])
                 ? $validator->validateMin($attribute, $value, [$validator->getData()[$parameters[0]]])
                 : $validator->validateMin($attribute, $value, $parameters[0]);
+        });
+
+        Validator::replacer('min_field', function ($message, $attribute, $rule, $parameters) {
+            $attributeName = $this->customAttributes[$parameters[0]] ?? $parameters[0];
+
+            return str_replace(':min_field', $attributeName, $message);
         });
     }
 

@@ -39,23 +39,10 @@ class UpdateRequest extends FormRequest
     public function attributes()
     {
         return [
-            'applications_start_at' => 'begin date of the applications submission period.',
-            'applications_end_at' => 'end date of applications submission period.',
-            'min_team_members' => 'min number of members per team.',
-            'max_team_members' => 'max number of members per team.',
-        ];
-    }
-
-    /**
-     * Get custom messages for validator errors.
-     *
-     * @return array
-     */
-    public function messages()
-    {
-        return [
-            'min_members_team.*' => 'The minimum number of members must between 0 and the maximum number of members.',
-            'max_members_team.*' => 'The maximum number of members must bigger than the minimum number of members.',
+            'applications_start_at' => 'begin date of the applications submission period',
+            'applications_end_at' => 'end date of applications submission period',
+            'min_team_members' => 'min number of members per team',
+            'max_team_members' => 'max number of members per team',
         ];
     }
 }
