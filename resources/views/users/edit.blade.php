@@ -23,8 +23,8 @@
 
                     <div class="form-group mb-4">
                         <label for="phone_number">Mobile phone</label>
-                        <input id="phone_number" type='tel' class="form-control {{ $errors->has('phone_number') ? 'is-invalid' : '' }}" name="phone_number" value="{{ old('phone_number', $user->phone_number) }}" 
-                        pattern='(\+(\d{3}))?\d{9}' required>
+                        <input id="phone_number" type='tel' class="form-control {{ $errors->has('phone_number') ? 'is-invalid' : '' }}" name="phone_number" value="{{ old('phone_number', $user->phone_number) }}"
+                        pattern='(\+(\d{3}))?\d{9}' title="Mobile phone should only contain nine digits" required>
 
                         @if ($errors->has('phone_number'))
                             <span class="invalid-feedback">

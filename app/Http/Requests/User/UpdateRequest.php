@@ -32,8 +32,8 @@ class UpdateRequest extends FormRequest
             'major' => 'required|string',
             'study_level' => 'required|string',
             'bio' => 'required|string|min:0|max:255',
-            'special_needs' => 'string|min:0|max:255',
-            'dietary_restrictions' => 'string|min:0|max:255',
+            'special_needs' => 'nullable|string|min:0|max:255',
+            'dietary_restrictions' => 'nullable|string|min:0|max:255',
         ];
     }
 }
