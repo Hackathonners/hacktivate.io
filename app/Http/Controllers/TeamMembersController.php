@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Alexa\Models\Team;
 use App\Alexa\Models\User;
-use Illuminate\Http\Request;
 use App\Exceptions\TeamException;
 use Illuminate\Support\Facades\DB;
 use App\Rules\User\EligibleForNewTeam;
+use App\Http\Requests\TeamMember\CreateRequest;
 
 class TeamMembersController extends Controller
 {
@@ -32,19 +32,19 @@ class TeamMembersController extends Controller
     /**
      * Store the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\TeamMember\CreateRequest  $request
      * @param  int  $teamId
      *
      * @return array
      */
-    public function store(Request $request, $teamId)
+    public function store(CreateRequest $request, $teamId)
     {
         try {
             DB::transaction(function () use ($request, $teamId) {
                 $team = auth()->user()->ownerTeam()->findOrFail($teamId);
 
                 $this->validate($request, [
-                    'github' => ['required', 'string', new EligibleForNewTeam()],
+                    'github' => [new EligibleForNewTeam()],
                 ]);
 
                 $member = User::whereGithub($request->input('github'))->first();
