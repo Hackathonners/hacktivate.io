@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\User;
 
-use Carbon\Carbon;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 

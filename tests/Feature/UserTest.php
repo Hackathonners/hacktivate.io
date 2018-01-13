@@ -52,31 +52,6 @@ class UserTest extends TestCase
         $this->assertUserWasUpdated($requestData);
     }
 
-    public function test_an_under_age_user_can_not_edit_his_profile()
-    {
-        // Prepare
-        $requestData = [
-            'phone_number' => '915524851',
-            'gender' => 'm',
-            'birthdate' => Carbon::now()->subYears(15)->toDateString(),
-            'dietary_restrictions' => 'Don\'t have any dietary restrictions',
-            'school' => 'University of Minho',
-            'major' => 'Informatics',
-            'study_level' => 'MsC',
-            'special_needs' => 'Only love',
-            'bio' => 'A very specific description',
-        ];
-
-        // Execute
-        $response = $this->actingAs($this->user)
-            ->put(route('users.update'), $requestData);
-
-        // Assert
-        $response->assertRedirect();
-        $this->assertUserWasNotUpdated($requestData);
-        $response->assertSessionHasErrors('birthdate');
-    }
-
     /*
      * Assert user model was updated.
      */
