@@ -19,13 +19,14 @@ Route::get('login/github', 'Auth\GithubLoginController@redirectToProvider')->nam
 Route::get('login/github/callback', 'Auth\GithubLoginController@handleProviderCallback');
 Route::post('logout', 'Auth\GithubLoginController@logout')->name('logout');
 
-Route::get('/profile/edit', 'UsersController@edit')->name('users.edit');
-Route::put('/profile', 'UsersController@update')->name('users.update');
-Route::patch('/profile', 'UsersController@update')->name('users.update');
-
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', 'UsersController@show')
-        ->name('home');
+    Route::get('/profile/edit', 'UsersController@edit')->name('users.edit');
+    Route::get('/profile', 'UsersController@show')->name('home');
+    Route::put('/profile', 'UsersController@update')->name('users.update');
+    Route::patch('/profile', 'UsersController@update')->name('users.update');
+
+    Route::put('/profile', 'UsersController@update')->name('users.update');
+    Route::patch('/profile', 'UsersController@update')->name('users.update');
 
     Route::resource('teams', 'TeamsController')
         ->only('create', 'store', 'edit', 'update', 'destroy');
@@ -35,4 +36,10 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('teams/{id}/members', 'TeamMembersController')
         ->only('index', 'store', 'destroy');
+
+    Route::middleware('can.admin')->group(function () {
+        Route::get('/settings/edit', 'Admin\SettingsController@edit')->name('settings.edit');
+        Route::put('/settings', 'Admin\SettingsController@update')->name('settings.update');
+        Route::patch('/settings', 'Admin\SettingsController@update')->name('settings.update');
+    });
 });

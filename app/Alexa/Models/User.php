@@ -149,4 +149,14 @@ class User extends Authenticatable
 
         return $this;
     }
+
+    /**
+     * Check if this user has a role.
+     *
+     * @return bool
+     */
+    public function hasRole()
+    {
+        return $this->role_id != null;
+    }
 }

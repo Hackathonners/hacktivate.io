@@ -94,7 +94,11 @@ class GithubLoginController extends Controller
                 'location' => $socialiteUser->user['location'] ?? null,
                 'password' => bcrypt(Str::random()),
             ]);
-            $user->role()->associate(Role::whereType('user')->first());
+
+            if (! $user->hasRole()) {
+                $user->role()->associate(Role::whereType(Role::ROLE_USER)->first());
+            }
+
             $user->save();
 
             return $user;

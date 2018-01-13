@@ -1,0 +1,44 @@
+<?php
+
+namespace App\Alexa\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Settings extends Model
+{
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'applications_start_at',
+        'applications_end_at',
+        'min_team_members',
+        'max_team_members',
+    ];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'applications_start_at',
+        'applications_end_at',
+    ];
+
+    /**
+     * Checks whether today's date is within the projects submission period.
+     *
+     * @return bool
+     */
+    public function withinProjectsSubmissionPeriod(): bool
+    {
+        if (is_null($this->applications_start_at) || is_null($this->applications_end_at)) {
+            return false;
+        }
+
+        return $this->applications_start_at->isPast() && ! $this->applications_end_at->isPast();
+    }
+}
