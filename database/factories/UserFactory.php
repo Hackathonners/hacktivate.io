@@ -17,7 +17,6 @@ use Faker\Generator as Faker;
 
 $factory->define(User::class, function (Faker $faker) {
     static $password;
-    $userName = $faker->unique()->userName;
 
     return [
         'name' => $faker->name,
@@ -38,14 +37,6 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
         'role_id' => function () {
             return Role::inRandomOrder()->first()->id;
-        },
-    ];
-});
-
-$factory->state(User::class, 'with-team', function (\Faker\Generator $faker) {
-    return [
-        'team_id' => function () {
-            return factory(Team::class)->create()->id;
         },
     ];
 });

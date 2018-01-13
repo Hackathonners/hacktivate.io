@@ -41,7 +41,7 @@
                     <span class="wizard-step-icon"><i class="icon fa fa-fw fa fa-user"></i></span>
                     <div class="media-body">
                         <h6 class="wizard-step-title">Complete your profile</h6>
-                        <p class="mb-0">A complete profile improves your chance to be accepted.
+                        <p class="mb-0">Provide more information about you to improve your chance to be accepted.
                             <br/>
                             <span class="small"><a href="{{ route('users.edit') }}" class="text-muted"><u>Edit your profile</u></a> and provide the most information as possible.</span>
                         </p>
@@ -49,14 +49,14 @@
                 </div>
 
                 {{-- Join or create team --}}
-                <div class="media wizard-step-{{ Auth::user()->hasTeam() ? 'done' : 'undone' }}">
+                <div class="media wizard-step-{{ Auth::user()->hasEligibleTeam() ? 'done' : 'undone' }}">
                     <span class="wizard-step-icon"><i class="icon fa fa-fw fa-users"></i></span>
                     <div class="media-body">
-                        <h6 class="wizard-step-title">Join or create a team</h6>
+                        <h6 class="wizard-step-title">Join or create a team with 2-4 members</h6>
                         <p class="mb-0">
                             Build your team and stay closer to the Hacktivate passport.
                             <br/>
-                            <span class="small"><a href=""class="text-muted"><u>Join our Slack</u></a> to find a team looking for members or <a href=""class="text-muted"><u>create a team.</u></a></span>
+                            <span class="small"><a href="" class="text-muted"><u>Join our Slack</u></a> to find a team looking for members or <a href="{{ route('teams.create') }}" class="text-muted"><u>create a team.</u></a></span>
                         </p>
                     </div>
                 </div>

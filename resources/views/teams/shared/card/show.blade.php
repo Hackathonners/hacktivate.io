@@ -6,7 +6,8 @@
                 <i class="far fa-cog"></i>
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Edit Team</a>
+                <a class="dropdown-item" href="{{ route('teams.edit', Auth::user()->team->id) }}">Edit Team</a>
+                <a class="dropdown-item" href="{{ route('members.index', Auth::user()->team->id) }}">Edit Members</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Leave Team</a>
             </div>

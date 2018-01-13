@@ -87,12 +87,66 @@ class User extends Authenticatable
     }
 
     /**
+     * Check if this user has an eligible team.
+     *
+     * @return bool
+     */
+    public function hasEligibleTeam()
+    {
+        return $this->hasTeam() && $this->team->isEligibleForAcceptance();
+    }
+
+    /**
      * Check if this user completed the application.
      *
      * @return bool
      */
     public function hasCompleteApplication()
     {
-        return $this->hasCompleteProfile() && $this->hasTeam();
+        return $this->hasCompleteProfile() && $this->hasEligibleTeam();
+    }
+
+    /**
+     * Scope a query to only include users that match given search.
+     *
+     * @param  $query  \Illuminate\Database\Eloquent\Builder
+     * @param  string|null  $search
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeFilterByEmailOrNickname($query, $search)
+    {
+        if ($search === null) {
+            return $query;
+        }
+
+        return $query->where('email', 'ILIKE', $search.'%')
+            ->orWhere('github', 'ILIKE', $search.'%');
+    }
+
+    /**
+     * Scope a query to only include users that do not have a team.
+     *
+     * @param  $query  \Illuminate\Database\Eloquent\Builder
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeWithoutTeam($query)
+    {
+        return $query->whereNull('team_id');
+    }
+
+    /**
+     * Leave the current team.
+     *
+     * @return $this
+     */
+    public function leaveCurrentTeam()
+    {
+        if ($this->hasTeam()) {
+            $this->team->removeMember($this);
+        }
+
+        return $this;
     }
 }
