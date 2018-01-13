@@ -76,7 +76,7 @@
                     <h5 class="text-primary mb-2">Professional Details</h5>
                     <div class="form-group mb-4">
                         <label for="school">Education Institution</label>
-                        <input id="school" type='text' class="form-control {{ $errors->has('school') ? 'is-invalid' : '' }}" name="school" value="{{ old('school', $user->school) }}" required>
+                        <input id="school" type="text" class="form-control {{ $errors->has('school') ? 'is-invalid' : '' }}" name="school" value="{{ old('school', $user->school) }}" required>
 
                         @if ($errors->has('school'))
                             <span class="invalid-feedback">
@@ -87,7 +87,7 @@
 
                     <div class="form-group mb-4">
                         <label for="major">Major</label>
-                        <input id="major" type='text' class="form-control {{ $errors->has('major') ? 'is-invalid' : '' }}" name="major" value="{{ old('major', $user->major) }}" required>
+                        <input id="major" type="text" class="form-control {{ $errors->has('major') ? 'is-invalid' : '' }}" name="major" value="{{ old('major', $user->major) }}" required>
 
                         @if ($errors->has('major'))
                             <span class="invalid-feedback">
@@ -98,7 +98,7 @@
 
                     <div class="form-group mb-4">
                         <label for="study_level">Study Level</label>
-                        <input id="study_level" type='text' class="form-control {{ $errors->has('study_level') ? 'is-invalid' : '' }}" name="study_level" value="{{ old('study_level', $user->study_level) }}" required>
+                        <input id="study_level" type="text" class="form-control {{ $errors->has('study_level') ? 'is-invalid' : '' }}" name="study_level" value="{{ old('study_level', $user->study_level) }}" required>
 
                         @if ($errors->has('study_level'))
                             <span class="invalid-feedback">
