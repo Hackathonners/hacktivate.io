@@ -20,3 +20,6 @@ Route::get('login/github/callback', 'Auth\GithubLoginController@handleProviderCa
 Route::post('logout', 'Auth\GithubLoginController@logout')->name('logout');
 
 Route::get('/profile', 'UsersController@show')->name('home');
+Route::get('/profile/edit', 'UsersController@edit')->name('users.edit');
+Route::put('/profile', 'UsersController@update')->name('users.update');
+Route::patch('/profile', 'UsersController@update')->name('users.update');
