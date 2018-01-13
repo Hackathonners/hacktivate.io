@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    private $customAttributes = [];
+    private $customAttributes;
 
     public function boot()
     {
@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
          * @param  mixed   $value
          * @param  array   $parameters
          * @param  Illuminate\Validation\Validator   $validator
+         *
          * @return bool
          */
         Validator::extend('max_field', function ($attribute, $value, $parameters, $validator) {
@@ -47,6 +48,7 @@ class AppServiceProvider extends ServiceProvider
          * @param  mixed   $value
          * @param  array   $parameters
          * @param  Illuminate\Validation\Validator   $validator
+         *
          * @return bool
          */
         Validator::extend('min_field', function ($attribute, $value, $parameters, $validator) {

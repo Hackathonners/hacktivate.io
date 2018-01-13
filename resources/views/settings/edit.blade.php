@@ -38,10 +38,10 @@
                     </div>
                     
 
-                    <h5 class="text-primary mb-2">Submitting details</h5>
+                    <h5 class="text-primary mb-2">Application details</h5>
                     <div class="form-group">
-                        <label for="applications_start_at">Projects submission start time</label>
-                        <input id="applications_start_at" type="datetime-local" class="form-control {{ $errors->has('applications_start_at') ? 'is-invalid' : '' }}" name="applications_start_at" value="{{ old('applications_start_at', $settings->applications_start_at->format('Y-m-d\Th:i')) }}" required autofocus>
+                        <label for="applications_start_at">Applications submission start time</label>
+                        <input id="applications_start_at" type="datetime-local" class="form-control {{ $errors->has('applications_start_at') ? 'is-invalid' : '' }}" name="applications_start_at" value="{{ old('applications_start_at', $settings->applications_start_at ? $settings->applications_start_at->format('Y-m-d\Th:i') : '') }}" required autofocus>
             
                         @if ($errors->has('applications_start_at'))
                             <span class="invalid-feedback">
@@ -51,8 +51,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="applications_end_at">Projects submission end time</label>
-                        <input id="applications_end_at" type="datetime-local" class="form-control {{ $errors->has('applications_end_at') ? 'is-invalid' : '' }}" name="applications_end_at" value="{{ old('applications_end_at', $settings->applications_end_at->format('Y-m-d\Th:i')) }}" required autofocus>
+                        <label for="applications_end_at">Applications submission end time</label>
+                        <input id="applications_end_at" type="datetime-local" class="form-control {{ $errors->has('applications_end_at') ? 'is-invalid' : '' }}" name="applications_end_at" value="{{ old('applications_end_at', $settings->applications_end_at ? $settings->applications_end_at->format('Y-m-d\Th:i') : '') }}" required autofocus>
 
                         @if ($errors->has('applications_end_at'))
                             <span class="invalid-feedback">

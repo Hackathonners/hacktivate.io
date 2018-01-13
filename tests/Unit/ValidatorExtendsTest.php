@@ -9,44 +9,46 @@ class ValidatorExtendsTest extends TestCase
 {
     public function testValidatorMaxField()
     {
+        // Prepare
         $rules = [
-          'testField' => 'numeric|max_field:maxField',
+          'test_input' => 'numeric|max_field:max_input',
         ];
-        $passesField = 2;
-        $failsField = 4;
-        $maxField = 3;
 
+        // Execute
         $validatorPasses = Validator::make([
-          'testField' => $passesField,
-          'maxField' => $maxField,
-        ], $rules);
-        $validatorFails = Validator::make([
-          'testField' => $failsField,
-          'maxField' => $maxField,
+          'test_input' => 2,
+          'max_input' => 3,
         ], $rules);
 
+        $validatorFails = Validator::make([
+          'test_input' => 4,
+          'max_input' => 3,
+        ], $rules);
+
+        // Assert
         $this->assertTrue($validatorPasses->passes());
         $this->assertTrue($validatorFails->fails());
     }
 
     public function testValidatorMinField()
     {
+        // Prepare
         $rules = [
-          'testField' => 'numeric|min_field:minField',
+          'test_input' => 'numeric|min_field:min_input',
         ];
-        $passesField = 4;
-        $failsField = 2;
-        $minField = 3;
 
+        // Execute
         $validatorPasses = Validator::make([
-          'testField' => $passesField,
-          'minField' => $minField,
-        ], $rules);
-        $validatorFails = Validator::make([
-          'testField' => $failsField,
-          'minField' => $minField,
+          'test_input' => 4,
+          'min_input' => 3,
         ], $rules);
 
+        $validatorFails = Validator::make([
+          'test_input' => 2,
+          'min_input' => 3,
+        ], $rules);
+
+        // Assert
         $this->assertTrue($validatorPasses->passes());
         $this->assertTrue($validatorFails->fails());
     }

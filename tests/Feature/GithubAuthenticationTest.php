@@ -46,6 +46,7 @@ class GithubAuthenticationTest extends TestCase
         $this->assertEquals($githubUser->email, $user->email);
         $this->assertEquals($githubUser->nickname, $user->github);
         $this->assertEquals($githubUser->user['avatar_url'], $user->avatar);
+        $this->assertEquals(Role::ROLE_USER, $user->role->type);
     }
 
     public function test_no_user_is_updated_when_login_exists()
@@ -93,34 +94,6 @@ class GithubAuthenticationTest extends TestCase
         // Assert that guest is redirected to home and no user is created.
         $response->assertRedirect('/');
         $this->assertEquals(0, User::count());
-    }
-
-    public function test_user_is_created_with_default_user_role()
-    {
-        $this->withoutExceptionHandling();
-        $githubUser = new \Laravel\Socialite\Two\User();
-        $githubUser->map([
-            'name' => 'Francisco Neves',
-            'email' => 'hi@francisconeves.me',
-            'nickname' => 'fntneves',
-            'user' => [
-                'avatar_url' => 'https://avatar.fake',
-                'location' => 'Guimarães, Portugal',
-            ],
-        ]);
-
-        // Mock Socialite to return mocked user on callback.
-        $this->mockSocialiteFacade($githubUser);
-
-        // Call login callback.
-        $response = $this->get($this->callbackUri);
-
-        // Assert that user has been created and has the User role.
-        $response->assertRedirect(route('home'));
-        $this->assertEquals(1, User::count());
-        $user = User::first();
-        $userType = Role::ROLE_USER;
-        $this->assertEquals($userType, $user->role->type);
     }
 
     public function test_admin_role_is_not_overridden_on_login()

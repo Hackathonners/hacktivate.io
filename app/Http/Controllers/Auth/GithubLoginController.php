@@ -96,8 +96,7 @@ class GithubLoginController extends Controller
             ]);
 
             if (! $user->hasRole()) {
-                $userRole = Role::whereType(Role::ROLE_USER)->first();
-                $user->role()->associate($userRole);
+                $user->role()->associate(Role::whereType(Role::ROLE_USER)->first());
             }
 
             $user->save();
