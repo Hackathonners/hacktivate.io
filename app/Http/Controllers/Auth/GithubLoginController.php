@@ -65,7 +65,7 @@ class GithubLoginController extends Controller
             $githubUser->avatar = $githubUser->user['avatar_url'] ?? null;
 
             $user = $this->findOrCreateUser($githubUser);
-            $this->guard()->login($user);
+            $this->guard()->login($user, true);
 
             return redirect()->intended($this->redirectPath());
         } catch (InvalidStateException $e) {
