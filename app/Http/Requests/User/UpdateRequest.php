@@ -25,11 +25,9 @@ class UpdateRequest extends FormRequest
      */
     public function rules()
     {
-        $minimum_date = Carbon::now()->subYears(18)->toDateString();
-
         return [
             'gender' => ['required', Rule::in(['f', 'm', 'o'])],
-            'birthdate' => 'required|date|before:'.$minimum_date,
+            'birthdate' => 'required|date',
             'phone_number' => ['required', 'string', 'regex:/(\+(\d{3}))?\d{9}/'],
             'school' => 'required|string',
             'major' => 'required|string',
