@@ -25,11 +25,11 @@ class UsersTableSeeder extends Seeder
         $adminRole = Role::whereType(Role::ROLE_ADMINISTRATOR)->first();
         foreach ($admins as $user) {
             User::create([
-                        'name' => $user['name'],
-                        'email' => $user['email'],
-                        'github' => $user['github'],
-                        'password' => bcrypt(Str::random()),
-                        'role_id' => $adminRole->id,
+                    'name' => $user['name'],
+                    'email' => $user['email'],
+                    'github' => $user['github'],
+                    'password' => bcrypt(Str::random()),
+                    'role_id' => $adminRole->id,
             ]);
         }
     }
