@@ -15,21 +15,18 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $admins = [
-            [
-                'name' => 'Diogo Couto',
-                'email' => 'diogo2couto@gmail.com',
-                'github' => 'djcouto',
-            ],
+            'diogo2couto@gmail.com',
+            'fntneves@gmail.com',
         ];
 
         $adminRole = Role::whereType(Role::ROLE_ADMINISTRATOR)->first();
-        foreach ($admins as $user) {
+        foreach ($admins as $email) {
             User::create([
-                    'name' => $user['name'],
-                    'email' => $user['email'],
-                    'github' => $user['github'],
-                    'password' => bcrypt(Str::random()),
-                    'role_id' => $adminRole->id,
+                'name' => '',
+                'email' => $email,
+                'github' => '',
+                'password' => bcrypt(Str::random()),
+                'role_id' => $adminRole->id,
             ]);
         }
     }
