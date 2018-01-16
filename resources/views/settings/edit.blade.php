@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-9 offset-md-2">
-        {{-- @include('layouts.shared.status') --}}
+        @include('layouts.shared.status')
 
         <div class="card">
             <div class="card-header">

@@ -8,11 +8,12 @@
     </div>
 
     <div class="col-md-8 off-set-2">
+        @include('layouts.shared.status')
 
         <div class="card">
             <div class="card-header">
                 <h4 class="text-primary">Edit profile</h4>
-                <p class="mb-0">This information will be used to know if you are really a hacker for the hackathon.</p>
+                <p class="mb-0">This information will be used to analyse your hacker profile.</p>
             </div>
             <form class="form" method="POST" action="{{ route('users.update') }}">
                 <div class="card-body">
