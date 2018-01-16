@@ -15,31 +15,31 @@ Route::get('/', function () {
     return view('pages.welcome');
 });
 
+/**
+ * Authentication routes.
+ */
 Route::get('login/github', 'Auth\GithubLoginController@redirectToProvider')->name('login');
 Route::get('login/github/callback', 'Auth\GithubLoginController@handleProviderCallback');
 Route::post('logout', 'Auth\GithubLoginController@logout')->name('logout');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile/edit', 'UsersController@edit')->name('users.edit');
-    Route::get('/profile', 'UsersController@show')->name('home');
-    Route::put('/profile', 'UsersController@update')->name('users.update');
-    Route::patch('/profile', 'UsersController@update')->name('users.update');
+/**
+ * Users routes.
+ */
+Route::get('/profile/edit', 'UsersController@edit')->name('users.edit');
+Route::get('/profile', 'UsersController@show')->name('home');
+Route::put('/profile', 'UsersController@update')->name('users.update');
+Route::patch('/profile', 'UsersController@update')->name('users.update');
+Route::resource('users', 'UsersController')->only('index', 'show');
 
-    Route::put('/profile', 'UsersController@update')->name('users.update');
-    Route::patch('/profile', 'UsersController@update')->name('users.update');
+/**
+ * Teams routes.
+ */
+Route::resource('teams', 'TeamsController')->only('create', 'store', 'edit', 'update', 'destroy');
+Route::resource('teams/{id}/members', 'TeamMembersController')->only('index', 'store', 'destroy');
 
-    Route::resource('teams', 'TeamsController')
-        ->only('create', 'store', 'edit', 'update', 'destroy');
-
-    Route::resource('users', 'UsersController')
-        ->only('index', 'show');
-
-    Route::resource('teams/{id}/members', 'TeamMembersController')
-        ->only('index', 'store', 'destroy');
-
-    Route::middleware('can.admin')->group(function () {
-        Route::get('/settings/edit', 'Admin\SettingsController@edit')->name('settings.edit');
-        Route::put('/settings', 'Admin\SettingsController@update')->name('settings.update');
-        Route::patch('/settings', 'Admin\SettingsController@update')->name('settings.update');
-    });
-});
+/**
+ * Settings routes.
+ */
+Route::get('/settings/edit', 'Admin\SettingsController@edit')->name('settings.edit');
+Route::put('/settings', 'Admin\SettingsController@update')->name('settings.update');
+Route::patch('/settings', 'Admin\SettingsController@update')->name('settings.update');
