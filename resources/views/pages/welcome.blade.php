@@ -191,7 +191,7 @@
 		<div class="row">
 			<div class="col-xs-6 col-sm-4">
 				<a href="//cesium.di.uminho.pt" target="_blank" class="partner">
-					<img class="img-fluid" src="http://cesium.di.uminho.pt/assets/logo-130aa2b71d4ca3daf2922a30af8574d2356002f2ac0e8059ff529754b0d935bd.png"
+					<img class="img-fluid" src="{{ asset('images/partners/cesium.png') }}"
 					 alt="CeSIUM">
 				</a>
 			</div>
