@@ -22,7 +22,7 @@
 				<p class="mb-1">
 					<a href="//twitter.com/hackathonners" class="mr-2"><i class="fab fa-lg fa-twitter"></i></a>
 					<a href="//github.com/hackathonners" class="mr-2"><i class="fab fa-lg fa-github"></i></a>
-					<a href="//hacktivate-hackathon.slack.com"><i class="fab fa-lg fa-slack-hash"></i></a>
+					<a href="//medium.com/Hackathonners" class="mr-2"><i class="fab fa-lg fa-medium"></i></a>
 				</p>
 				<a class="small" href="mailto:hello@hacktivate.io">hello@hacktivate.io</a>
 			</div>

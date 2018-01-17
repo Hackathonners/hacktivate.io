@@ -56,7 +56,7 @@
                         <p class="mb-0">
                             Build your team and stay closer to the Hacktivate passport.
                             <br/>
-                            <span class="small"><a href="" class="text-muted"><u>Join our Slack</u></a> to find a team looking for members or <a href="{{ route('teams.create') }}" class="text-muted"><u>create a team.</u></a></span>
+                            <span class="small"><a href="https://join.slack.com/t/hacktivate-hackathon/shared_invite/enQtMzAwMDM5NjUwODY1LTE2ODU3ZjlhMmE3Y2MzZTRkZjMwZDZjZDViYjNiMDE2MjhmYjQ3MWRhNDNiNzU3NjY3YWFkOGNhMDM2NjcxNjI" class="text-muted"><u>Join our Slack</u></a> to find a team looking for members or <a href="{{ route('teams.create') }}" class="text-muted"><u>create a team.</u></a></span>
                         </p>
                     </div>
                 </div>
