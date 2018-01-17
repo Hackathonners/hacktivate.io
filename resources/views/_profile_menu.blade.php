@@ -4,7 +4,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
         <a href="{{ route('home') }}" class="dropdown-item">Your profile</a>
-        <a href="{{ route('home') }}" class="dropdown-item">Your team</a>
 
         <div class="dropdown-divider"></div>
         

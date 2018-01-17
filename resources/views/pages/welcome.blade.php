@@ -34,14 +34,11 @@
 	</nav>
 	<div class="jumbotron d-flex align-items-center hero-content no-background text-light text-center">
 		<div class="container">
-			<h1 class="display-4 hero-display mx-auto p-4">The hackathon
-				<br/>for &lt;code&gt; lovers</h1>
-			<h4 class="pt-5">
-				<strong>February 10-11, 2018</strong>
-			</h4>
-			<h5 class="pt-2">Museu Dom Diogo de Sousa, Braga</h5>
+			<h1 class="display-4 hero-display mx-auto p-4">The hackathon<br/>for &lt;code&gt; lovers</h1>
+			<h4 class="pt-5"><strong>February 10-11, 2018</strong></h4>
+			<h5 class="pt-2">University of Minho, Braga, Portugal</h5>
 			<a class="hero-action btn btn-outline-info call-to-action mt-4" href="{{ route('login') }}" role="button">Apply now</a>
-			<p class="small text-muted pt-1">with GitHub account</p>
+			<p class="small text-info pt-1">with GitHub</p>
 		</div>
 	</div>
 </div>
@@ -50,21 +47,17 @@
 		<h4 class="section-title">
 			<span>&lt; About HACKTIVATE &gt;</span>
 		</h4>
-		<p class="lead">A programming marathon open for students for creating something outstanding in 24 hours. It will take place at the event
+		<p class="lead">A programming marathon open for students to create something outstanding within 24 hours. It will take place at the event
 			<a href="http://seium.org" target="_blank">Semana da Engenharia Informática</a>, a week of activities about tech trends.</p>
 		<div class="row">
 			<div class="col-xs-6 col-sm-6">
-				<h6 class="section-subtitle text-info">
-					<i class="fas fa-gamepad fa-fw fa-lg"></i> Talks and relax moments</h6>
-				<p>When programming becomes challenging, take a moment to attend a talk, relax, play games and even to connect with people
-					of the other teams.</p>
+				<h6 class="section-subtitle text-info"><i class="fas fa-gamepad fa-fw fa-lg"></i> Talks and relax moments</h6>
+				<p>When programming becomes challenging, take a moment to attend a talk, relax, play games and even to connect with people of the other teams.</p>
 				<img src="/images/return-relax.jpg" alt="Prizes" class="img-fluid img-about">
 			</div>
 			<div class="col-xs-6 col-sm-6">
-				<h6 class="section-subtitle text-info">
-					<i class="fa fa-trophy-alt fa-fw fa-lg"></i> Winning prizes</h6>
-				<p>Get the chance to win prizes valued at 1000€ in total. Ready for the challenge? Prepare your idea, build your prototype
-					and captivate the jury to be one of the three winner projects.</p>
+				<h6 class="section-subtitle text-info"><i class="fa fa-trophy-alt fa-fw fa-lg"></i> Winning prizes</h6>
+				<p>Get the chance to win prizes valued at 1000€ in total. Ready for the challenge? Prepare your idea, build your prototype and captivate the jury to be one of the three winner projects.</p>
 				<img src="/images/return-prizes.jpg" alt="Prizes" class="img-fluid img-about">
 			</div>
 		</div>
@@ -76,13 +69,11 @@
 			<h4 class="section-title">
 				<span>&lt; Location &gt;</span>
 			</h4>
-			<h5>Museu Dom Diogo de Sousa</h5>
-			<p>R. dos Bombeiros Voluntários
-				<br/>4700-025 Braga
-				<br/> Portugal</p>
+			<h5>University of Minho</h5>
+			<p>R. da Universidade<br/>4710-057 Braga<br/>Portugal</p>
 			<h6 class="section-subtitle">GPS Coordinates</h6>
-			<p>Latitude: 41.546000
-				<br/>Longitude: -8.427199</p>
+			<p class="mb-0">Latitude: 41.5596014</p>
+			<p>Longitude: -8.3979531</p>
 		</div>
 	</div>
 	<div id="map" style="height: 500px"></div>
