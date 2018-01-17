@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Alexa\Models\Settings;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\App;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
         if (App::environment('production')) {
             URL::forceSchema('https');
         }
-        
+
         /*
          * Validate the size of an attribute is less than a maximum field value.
          *
