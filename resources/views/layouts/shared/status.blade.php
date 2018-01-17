@@ -5,7 +5,14 @@
     </div>
 @endif
 
-{{-- Show session errors, if any --}}
+{{-- Show session error --}}
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
+{{-- Show errors, if any --}}
 @if ($errors->isNotEmpty())
     <div class="alert alert-danger">
         <strong>Sorry, there was a problem.</strong>

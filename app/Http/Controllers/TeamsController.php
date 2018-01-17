@@ -16,6 +16,7 @@ class TeamsController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('can.apply')->except('edit', 'update');
     }
 
     /**

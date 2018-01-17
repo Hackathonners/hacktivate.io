@@ -10,11 +10,12 @@
 
     {{-- User summary --}}
     <div class="col-md-9">
+        @include('layouts.shared.status')
+        @include('layouts.shared.applications')
 
         {{-- Application status --}}
         <div class="card mb-4">
             <div class="card-body">
-
                 @if(Auth::user()->hasCompleteApplication())
                 <div class="media wizard-status-done">
                     <span class="wizard-step-icon"><i class="icon fa fa-fw fa-check"></i></span>

@@ -11,7 +11,7 @@ class SettingsTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testProjectsSubmissionPeriodIsActive()
+    public function testApplicationsSubmissionPeriodIsActive()
     {
         // Prepare
         $settings = new Settings();
@@ -21,10 +21,10 @@ class SettingsTest extends TestCase
         $settings->applications_end_at = Carbon::tomorrow();
 
         //Assert
-        $this->assertTrue($settings->withinProjectsSubmissionPeriod());
+        $this->assertTrue($settings->withinApplicationsPeriod());
     }
 
-    public function testProjectsSubmissionPeriodIsNotActive()
+    public function testApplicationsSubmissionPeriodIsNotActive()
     {
         // Prepare
         $settings = new Settings();
@@ -34,10 +34,10 @@ class SettingsTest extends TestCase
         $settings->applications_end_at = Carbon::tomorrow()->addDays(2);
 
         // Assert
-        $this->assertFalse($settings->withinProjectsSubmissionPeriod());
+        $this->assertFalse($settings->withinApplicationsPeriod());
     }
 
-    public function testProjectsSubmissionHasExpired()
+    public function testApplicationsSubmissionHasExpired()
     {
         // Prepare
         $settings = new Settings();
@@ -47,6 +47,6 @@ class SettingsTest extends TestCase
         $settings->applications_end_at = Carbon::yesterday();
 
         // Assert
-        $this->assertFalse($settings->withinProjectsSubmissionPeriod());
+        $this->assertFalse($settings->withinApplicationsPeriod());
     }
 }
