@@ -17,6 +17,10 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        if (App::environment('production')) {
+            URL::forceSchema('https');
+        }
+        
         /*
          * Validate the size of an attribute is less than a maximum field value.
          *
