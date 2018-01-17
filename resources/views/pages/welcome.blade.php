@@ -18,9 +18,11 @@
 			</button>
 			<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
 				<ul class="navbar-nav">
+					{{--
 					<li class="nav-item">
 						<a href="{{ route('login') }}" class="nav-link mr-2">Code of conduct</a>
 					</li>
+					--}}
 					@guest
                         <li class="nav-item">
                             <a href="{{ route('login') }}" class="btn btn-outline-info call-to-action">Apply</a>
@@ -72,8 +74,8 @@
 			<h5>University of Minho</h5>
 			<p>R. da Universidade<br/>4710-057 Braga<br/>Portugal</p>
 			<h6 class="section-subtitle">GPS Coordinates</h6>
-			<p class="mb-0">Latitude: 41.5596014</p>
-			<p>Longitude: -8.3979531</p>
+			<p class="mb-0">Latitude: 41.559961</p>
+			<p>Longitude: -8.397652</p>
 		</div>
 	</div>
 	<div id="map" style="height: 500px"></div>
@@ -248,8 +250,8 @@
 			<div class="col-xs-6 col-sm-4">
 				<h6 class="section-subtitle">What are the rules?</h6>
 				<p>Your should be aware of the
-					<a href="">Regulation</a> of the hackathon and entirely respect the
-					<a href="">Code of Conduct</a>.</p>
+					<a href="{{ asset('storage/docs/regulation.pdf') }}">Regulation</a> of the hackathon and entirely respect the
+					<a href="{{ asset('storage/docs/coc.pdf') }}">Code of Conduct</a>.</p>
 			</div>
 			<div class="col-xs-6 col-sm-4">
 			</div>
@@ -259,7 +261,7 @@
 				<span class="fa-li">
 					<i class="far fa-chevron-circle-right"></i>
 				</span>
-				<a class="small" href="/faq">Do you have a question? E-mail us.</a>
+				<a class="small" href="mailto:hello@hacktivate.io">Do you have a question? E-mail us.</a>
 			</li>
 		</ul>
 	</div>

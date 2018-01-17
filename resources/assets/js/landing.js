@@ -1,6 +1,6 @@
 // Landing Page - Venue Map
 window.initVenueMap = () => {
-    let venue = { lat: 41.546000, lng: -8.427199 };
+    let venue = { lat: 41.559961, lng: -8.397652 };
     let map = new google.maps.Map(document.getElementById('map'), {
         zoom: 16,
         center: venue,
