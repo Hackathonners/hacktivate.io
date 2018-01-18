@@ -36,7 +36,7 @@
 
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<title>HACKTIVATE, February 10-11 2018, Universidade do Minho (Braga, Portugal)</title>
+	<title>Hacktivate — February 10-11 2018, Universidade do Minho</title>
 
 	<!-- Styles -->
 	<link href="{{ mix('css/app.css') }}" rel="stylesheet">
