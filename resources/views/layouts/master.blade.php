@@ -23,9 +23,20 @@
 	<meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
 
+	<meta name="description" content="Apply now to the Hacktivate hackathon organized by Hackathonners. It is a programming marathon open for students to create something outstanding within 24 hours. This very first edition will take place at Semana da Engenharia Informática.">
+    <meta name="keywords" content="hackathon, hackathonners, event, fun, programming, marathon, organizer, development, ideas, fun, team, building, group, continuous, learning">
+    <meta name="author" content="Hackathonners">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="og:image" content="{{ asset('images/banner.png') }}">
+    <meta name="og:url" content="//hacktivate.io">
+    <meta name="og:type" content="website">
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@Hackathonners" />
+
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<title>HACKTIVATE, February 10-11 2018, Museu Dom Diogo de Sousa (Braga, Portugal)</title>
+	<title>HACKTIVATE, February 10-11 2018, Universidade do Minho (Braga, Portugal)</title>
 
 	<!-- Styles -->
 	<link href="{{ mix('css/app.css') }}" rel="stylesheet">

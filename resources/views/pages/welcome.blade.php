@@ -38,7 +38,7 @@
 		<div class="container">
 			<h1 class="display-4 hero-display mx-auto p-4">The hackathon<br/>for &lt;code&gt; lovers</h1>
 			<h4 class="pt-5"><strong>February 10-11, 2018</strong></h4>
-			<h5 class="pt-2">University of Minho, Braga, Portugal</h5>
+			<h5 class="pt-2">Universidade do Minho, Braga, Portugal</h5>
 			<a class="hero-action btn btn-outline-info call-to-action mt-4" href="{{ route('login') }}" role="button">Apply now</a>
 			<p class="small text-info pt-1">with GitHub</p>
 		</div>
@@ -71,7 +71,7 @@
 			<h4 class="section-title">
 				<span>&lt; Location &gt;</span>
 			</h4>
-			<h5>University of Minho</h5>
+			<h5>Universidade do Minho</h5>
 			<p>R. da Universidade<br/>4710-057 Braga<br/>Portugal</p>
 			<h6 class="section-subtitle">GPS Coordinates</h6>
 			<p class="mb-0">Latitude: 41.559961</p>
