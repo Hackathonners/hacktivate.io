@@ -23,7 +23,7 @@
 	<meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
 
-	<meta name="description" content="Apply now to the Hacktivate hackathon organized by Hackathonners. It is a programming marathon open for students to create something outstanding within 24 hours. This very first edition will take place at Semana da Engenharia Informática.">
+	<meta name="description" content="Apply now to the Hacktivate hackathon, organized by Hackathonners. It is a programming marathon for students to create something outstanding within 24 hours.">
     <meta name="keywords" content="hackathon, hackathonners, event, fun, programming, marathon, organizer, development, ideas, fun, team, building, group, continuous, learning">
     <meta name="author" content="Hackathonners">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
