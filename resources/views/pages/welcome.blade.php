@@ -46,9 +46,13 @@
 </div>
 <div class="section">
 	<div class="container">
-		<h4 class="section-title">
-			<span>&lt; About HACKTIVATE &gt;</span>
-		</h4>
+		<div class="d-none d-sm-block">
+				<span>&lt; About Hacktivate &gt;</span>
+			</div>
+			<div class="d-block d-sm-none">
+				<span>&lt; About &gt;</span>
+			</div>
+		</div>
 		<p class="lead">A programming marathon open for students to create something outstanding within 24 hours. It will take place at the event
 			<a href="http://seium.org" target="_blank">Semana da Engenharia Informática</a>, a week of activities about tech trends.</p>
 		<div class="row">
