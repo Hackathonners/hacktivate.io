@@ -14,7 +14,7 @@
 				<p class="mb-1">Built for you with
 					<i class="fas fa-heart text-primary"></i> &
 					<i class="fas fa-coffee"></i> by
-					<a href="//hackathonners.org">Hackathonners</a>
+					<a href="http://hackathonners.org">Hackathonners</a>
 				</p>
 				<span class="text-muted small">&copy; Copyright 2017
 					<a class="text-muted" href="//hackathonners.org" target="_blank">Hackathonners</a>. All rights reserved.</span>

@@ -221,7 +221,7 @@
 			</div>
 			<div class="col-xs-6 col-sm-4">
 				<h6 class="section-subtitle">Can I participate?</h6>
-				<p>To be elegible for participation, you need to be a university student or left the university in the past year. Unfortunately,
+				<p>To be eligible for participation, you need to be a university student or left the university in the past year. Unfortunately,
 					we are unable to accept students under 18 years old.</p>
 			</div>
 			<div class="col-xs-6 col-sm-4">
