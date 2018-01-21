@@ -10,7 +10,8 @@
         "friendsofphp/php-cs-fixer": "^2.9",
         "laravel/framework": "5.5.*",
         "laravel/socialite": "^3.0",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "sentry/sentry-laravel": "^0.8.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",
