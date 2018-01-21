@@ -60,7 +60,7 @@ class Team extends Model
             ? $this->users->count()
             : $this->users()->count();
 
-        return $currentUsersCount > 1;
+        return $currentUsersCount >= app('settings')->min_team_members;
     }
 
     /**
@@ -74,7 +74,7 @@ class Team extends Model
             ? $this->users->count()
             : $this->users()->count();
 
-        return $currentUsersCount === 4;
+        return $currentUsersCount === app('settings')->max_team_members;
     }
 
     /**

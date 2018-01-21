@@ -29,11 +29,11 @@ class Settings extends Model
     ];
 
     /**
-     * Checks whether today's date is within the projects submission period.
+     * Checks whether today's date is within the applications period.
      *
      * @return bool
      */
-    public function withinProjectsSubmissionPeriod(): bool
+    public function withinApplicationsPeriod(): bool
     {
         if (is_null($this->applications_start_at) || is_null($this->applications_end_at)) {
             return false;

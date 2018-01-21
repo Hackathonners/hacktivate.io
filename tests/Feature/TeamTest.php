@@ -29,6 +29,17 @@ class TeamTest extends TestCase
         $this->assertEquals($owner->id, $team->users()->first()->id, 'Team does not contain specified members.');
     }
 
+    public function test_user_may_not_create_a_team_out_of_applications_period()
+    {
+        $this->disableApplicationsPeriod();
+
+        $response = $this->actingAs(factory(User::class)->create())
+            ->post(route('teams.store'), []);
+
+        $this->assertEquals(0, Team::count());
+        $this->assertEquals(trans('settings.applications_closed'), app('session')->get('error'));
+    }
+
     public function test_user_leaves_current_team_when_creates_a_new_team()
     {
         $owner = factory(User::class)->create();

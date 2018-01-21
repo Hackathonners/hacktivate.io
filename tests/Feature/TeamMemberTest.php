@@ -22,6 +22,30 @@ class TeamMemberTest extends TestCase
         $this->assertTrue($team->users()->whereGithub($newMember->github)->exists());
     }
 
+    public function test_user_may_not_change_team_out_of_applications_period()
+    {
+        $this->disableApplicationsPeriod();
+        $team = factory(Team::class)->create();
+        $member = factory(User::class)->create(['team_id' => $team->id]);
+
+        // Add member to team.
+        $newMember = factory(User::class)->create();
+        $requestData = ['github' => $newMember->github];
+        $response = $this->actingAs($team->owner)
+            ->post(route('teams.store', $team->id), $requestData);
+
+        $team->refresh();
+        $this->assertEquals(1, $team->users->count());
+        $this->assertEquals(trans('settings.applications_closed'), app('session')->get('error'));
+
+        // Delete member from team.
+        $response = $this->actingAs($team->owner)
+            ->delete(route('teams.destroy', ['id' => $member->id]));
+
+        $this->assertEquals(1, $team->users->count());
+        $this->assertEquals(trans('settings.applications_closed'), app('session')->get('error'));
+    }
+
     public function test_user_can_remove_a_member_from_their_team()
     {
         $team = factory(Team::class)->create();
