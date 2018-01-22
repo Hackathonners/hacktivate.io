@@ -6,14 +6,15 @@
         <a href="{{ route('home') }}" class="dropdown-item">Your profile</a>
 
         <div class="dropdown-divider"></div>
-        
+
         <a href="{{ route('users.edit') }}" class="dropdown-item">Edit profile</a>
         @if(Auth::user()->role->isAdmin())
-            <a href="{{ route('settings.edit') }}" class="dropdown-item">Edit settings</a>            
+            <a href="{{ route('settings.edit') }}" class="dropdown-item">Edit settings</a>
+            <a href="{{ route('admin.users.index') }}" class="dropdown-item">View all users</a>            
         @endif
-        
+
         <div class="dropdown-divider"></div>
-        
+
        <form id="logout-form" action="{{ route('logout') }}" method="POST">
             {{ csrf_field() }}
             <button type="submit" class="dropdown-item">
