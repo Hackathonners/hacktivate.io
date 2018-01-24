@@ -23,6 +23,17 @@
                     <h5 class="text-primary mb-2">Account details</h5>
 
                     <div class="form-group mb-4">
+                        <label for="location">Location</label>
+                        <input id="location" type='text' class="form-control {{ $errors->has('location') ? 'is-invalid' : '' }}" name="location" value="{{ old('location', $user->location) }}" required>
+
+                        @if ($errors->has('location'))
+                            <span class="invalid-feedback">
+                                <strong>{{ $errors->first('location') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+
+                    <div class="form-group mb-4">
                         <label for="phone_number">Mobile phone</label>
                         <input id="phone_number" type='tel' class="form-control {{ $errors->has('phone_number') ? 'is-invalid' : '' }}" name="phone_number" value="{{ old('phone_number', $user->phone_number) }}"
                         pattern='(\+(\d{3}))?\d{9}' title="Mobile phone should only contain nine digits" required>

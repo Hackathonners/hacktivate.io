@@ -91,7 +91,7 @@ class GithubLoginController extends Controller
                 'email' => $socialiteUser->getEmail(),
                 'github' => $socialiteUser->getNickname(),
                 'avatar' => $socialiteUser->getAvatar(),
-                'location' => $socialiteUser->user['location'] ?? null,
+                'location' => $socialiteUser->user['location'] ?? $user->location,
                 'password' => bcrypt(Str::random()),
             ]);
 

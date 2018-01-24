@@ -27,6 +27,7 @@ class UpdateRequest extends FormRequest
         return [
             'gender' => ['required', Rule::in(['f', 'm', 'o'])],
             'birthdate' => 'required|date',
+            'location' => 'required|string|max:50',
             'phone_number' => ['required', 'string', 'regex:/(\+(\d{3}))?\d{9}/'],
             'school' => 'required|string',
             'major' => 'required|string',

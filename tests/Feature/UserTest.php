@@ -33,6 +33,7 @@ class UserTest extends TestCase
         $requestData = [
             'phone_number' => '915524851',
             'gender' => 'm',
+            'location' => 'somewhere over the rainbow',
             'birthdate' => Carbon::now()->subYears(20)->toDateString(),
             'dietary_restrictions' => 'Don\'t have any dietary restrictions',
             'school' => 'University of Minho',
