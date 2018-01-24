@@ -29,13 +29,27 @@ class Settings extends Model
     ];
 
     /**
+     * Checks if applications period is set.
+     *
+     * @return bool
+     */
+    public function hasApplicationsPeriod(): bool
+    {
+        if (is_null($this->applications_start_at) || is_null($this->applications_end_at)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * Checks whether today's date is within the applications period.
      *
      * @return bool
      */
     public function withinApplicationsPeriod(): bool
     {
-        if (is_null($this->applications_start_at) || is_null($this->applications_end_at)) {
+        if (! $this->hasApplicationsPeriod()) {
             return false;
         }
 
