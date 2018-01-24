@@ -61,6 +61,7 @@ class UserTest extends TestCase
         $this->user->refresh();
         $this->assertEquals($data['phone_number'], $this->user->phone_number);
         $this->assertEquals($data['gender'], $this->user->gender);
+        $this->assertEquals($data['location'], $this->user->location);
         $this->assertEquals($data['birthdate'], $this->user->birthdate);
         $this->assertEquals($data['dietary_restrictions'], $this->user->dietary_restrictions);
         $this->assertEquals($data['school'], $this->user->school);
@@ -78,6 +79,7 @@ class UserTest extends TestCase
         $user = $this->user->fresh();
         $this->assertEquals($user->phone_number, $this->user->phone_number);
         $this->assertEquals($user->gender, $this->user->gender);
+        $this->assertEquals($user->location, $this->user->location);
         $this->assertEquals($user->birthdate, $this->user->birthdate);
         $this->assertEquals($user->dietary_restrictions, $this->user->dietary_restrictions);
         $this->assertEquals($user->school, $this->user->school);
