@@ -17,9 +17,8 @@
                     <a href="http://hackathonners.org">Hackathonners</a>
                 </p>
                 <span class="text-muted small">&copy; Copyright {{ date('Y') }}
-                    <a class="text-muted" href="//hackathonners.org" target="_blank">Hackathonners</a>. All rights reserved.</span>
-                }
-                }
+                    <a class="text-muted" href="//hackathonners.org" target="_blank">Hackathonners</a>. All rights reserved.
+                </span>
             </div>
             <div class="col-xs-12 col-sm-4 text-center text-sm-right d-none d-sm-block">
                 <p class="mb-1">
