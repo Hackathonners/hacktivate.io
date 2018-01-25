@@ -6,9 +6,11 @@ use Socialite;
 use App\Alexa\Models\Role;
 use App\Alexa\Models\User;
 use Illuminate\Support\Str;
+use App\Mail\UserRegistered;
 use Illuminate\Support\Facades\DB;
 use Laravel\Socialite\AbstractUser;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Laravel\Socialite\Two\InvalidStateException;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -66,6 +68,10 @@ class GithubLoginController extends Controller
 
             $user = $this->findOrCreateUser($githubUser);
             $this->guard()->login($user, true);
+
+            if ($user->wasRecentlyCreated) {
+                Mail::to($user)->send(new UserRegistered($user));
+            }
 
             return redirect()->intended($this->redirectPath());
         } catch (InvalidStateException $e) {

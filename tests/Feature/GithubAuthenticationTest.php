@@ -6,6 +6,8 @@ use Mockery as m;
 use Tests\TestCase;
 use App\Alexa\Models\Role;
 use App\Alexa\Models\User;
+use App\Mail\UserRegistered;
+use Illuminate\Support\Facades\Mail;
 use Laravel\Socialite\Facades\Socialite;
 
 class GithubAuthenticationTest extends TestCase
@@ -20,6 +22,7 @@ class GithubAuthenticationTest extends TestCase
 
     public function test_user_is_created_after_first_login()
     {
+        Mail::fake();
         $this->withoutExceptionHandling();
         $githubUser = new \Laravel\Socialite\Two\User();
         $githubUser->map([
@@ -39,6 +42,9 @@ class GithubAuthenticationTest extends TestCase
         $response = $this->get($this->callbackUri);
 
         // Assert that user has been created and match Github's mocked data.
+        Mail::assertSent(UserRegistered::class, function ($mail) use ($githubUser) {
+            return $mail->hasTo($githubUser->email) && $mail->user->email === $githubUser->email;
+        });
         $response->assertRedirect(route('home'));
         $this->assertEquals(1, User::count());
         $user = User::first();
@@ -51,6 +57,7 @@ class GithubAuthenticationTest extends TestCase
 
     public function test_no_user_is_updated_when_login_exists()
     {
+        Mail::fake();
         $user = factory(User::class)->create();
 
         $githubUser = new \Laravel\Socialite\Two\User();
@@ -71,6 +78,7 @@ class GithubAuthenticationTest extends TestCase
         $response = $this->get($this->callbackUri);
 
         // Assert that existing user matches Github's mocked data.
+        Mail::assertNotSent(UserRegistered::class);
         $response->assertRedirect(route('home'));
         $this->assertEquals(1, User::count());
         $user = User::first();
