@@ -54,7 +54,7 @@
 				<span>&lt; About &gt;</span>
 			</div>
 		</h4>
-		<p class="lead">A programming marathon open for <strong>code lovers</strong> to create something outstanding within 24 hours. Focused on the "learn by doing" principle, it is the natural habitat for people who code for the sake of coding. It will take place during the event
+		<p class="lead">A programming marathon for <strong>code lovers</strong> to create something outstanding within 24 hours. Focused on the "learn by doing" principle, it is the natural habitat for people who code for the sake of coding. It will take place during the event
 			<a href="http://seium.org" target="_blank">Semana da Engenharia Informática</a>.</p>
 		<div class="row">
 			<div class="col-xs-6 col-sm-6">
