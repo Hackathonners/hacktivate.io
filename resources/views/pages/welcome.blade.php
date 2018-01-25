@@ -54,17 +54,17 @@
 				<span>&lt; About &gt;</span>
 			</div>
 		</h4>
-		<p class="lead">A programming marathon open for students to create something outstanding within 24 hours. It will take place at the event
-			<a href="http://seium.org" target="_blank">Semana da Engenharia Informática</a>, a week of activities about tech trends.</p>
+		<p class="lead">A programming marathon open for <strong>code lovers</strong> to create something outstanding within 24 hours. Focused on the "learn by doing" principle, it is the natural habitat for people who code for the sake of coding. It will take place during the event
+			<a href="http://seium.org" target="_blank">Semana da Engenharia Informática</a>.</p>
 		<div class="row">
 			<div class="col-xs-6 col-sm-6">
-				<h6 class="section-subtitle text-info"><i class="fas fa-gamepad fa-fw fa-lg"></i> Talks and relax moments</h6>
-				<p>When programming becomes challenging, take a moment to attend a talk, relax, play games and even to connect with people of the other teams.</p>
+				<h6 class="section-subtitle text-info"><i class="fas fa-gamepad fa-fw fa-lg"></i> Games and relax moments</h6>
+				<p>When programming becomes a challenge, take a moment to have fun, relax, participate in challenges and even to expand your network by connecting to other attendees.</p>
 				<img src="/images/return-relax.jpg" alt="Prizes" class="img-fluid img-about">
 			</div>
 			<div class="col-xs-6 col-sm-6">
-				<h6 class="section-subtitle text-info"><i class="fa fa-trophy-alt fa-fw fa-lg"></i> Winning prizes</h6>
-				<p>Get the chance to win prizes valued at 1000€ in total. Ready for the challenge? Prepare your idea, build your prototype and captivate the jury to be one of the three winner projects.</p>
+				<h6 class="section-subtitle text-info"><i class="fa fa-trophy-alt fa-fw fa-lg"></i> Win amazing prizes</h6>
+				<p>Take the chance to win prizes valued at 1000€ total. Ready for the challenge? Sketch up your idea, code your prototype and captivate the jury to be one of the three winner projects.</p>
 				<img src="/images/return-prizes.jpg" alt="Prizes" class="img-fluid img-about">
 			</div>
 		</div>
@@ -217,11 +217,11 @@
 			<div class="col-xs-6 col-sm-4">
 				<h6 class="section-subtitle">What is a hackathon?</h6>
 				<p>It is a programming marathon, where teams of 2-4 put their ideas together to create something exciting in only 24 hours.
-					It gives hackers a chance to turn their ideas into prototypes.</p>
+					It gives hackers the chance to turn their ideas into prototypes.</p>
 			</div>
 			<div class="col-xs-6 col-sm-4">
 				<h6 class="section-subtitle">Can I participate?</h6>
-				<p>To be eligible for participation, you need to be a university student or left the university in the past year. Unfortunately,
+				<p>To be eligible for participation, you need to be a university student or recently left the university. Unfortunately,
 					we are unable to accept students under 18 years old.</p>
 			</div>
 			<div class="col-xs-6 col-sm-4">
@@ -233,8 +233,8 @@
 		<div class="row">
 			<div class="col-xs-6 col-sm-4">
 				<h6 class="section-subtitle">What about sleep?</h6>
-				<p>We have a special room for people who want to get some Z's during the night. It is also recommend to take some time to
-					rest during the event.</p>
+				<p>We have a special room for people who want to get some Z's during the night. It is also recommended to take some time to
+					rest during the marathon.</p>
 			</div>
 			<div class="col-xs-6 col-sm-4">
 				<h6 class="section-subtitle">What do I need to bring?</h6>
@@ -243,14 +243,18 @@
 			</div>
 			<div class="col-xs-6 col-sm-4">
 				<h6 class="section-subtitle">What about food?</h6>
-				<p>We provide lunch, dinner and snacks during the event. You will be able to specify dietary restrictions in your profile.
-					We will do our best to respect them.</p>
+				<p>We provide lunch, dinner and snacks during the event. You are able to specify dietary restrictions in your profile.
+					We'll do our best to fulfill them.</p>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-6 col-sm-4">
 				<h6 class="section-subtitle">What is the subject?</h6>
-				<p>This hackathon is subject-free. We encourage you to think out of the box, build your idea and surprise the judges.</p>
+				<p>This hackathon is subject-free. We encourage you to think out of the box, build up your idea prototype and surprise the jurors.</p>
+			</div>
+			<div class="col-xs-6 col-sm-4">
+				<h6 class="section-subtitle">Don't have a team?</h6>
+				<p>We have an active Slack community with all potential attendees. Join us on Slack, find your buddies and build up a talented team!</p>
 			</div>
 			<div class="col-xs-6 col-sm-4">
 				<h6 class="section-subtitle">What are the rules?</h6>
