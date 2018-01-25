@@ -39,10 +39,12 @@ class SendWelcomeEmail extends Command
      */
     public function handle()
     {
-        $users = \App\Alexa\Models\User::all();
+        $users = \App\Alexa\Models\User::with('role')->get();
 
         $users->each(function ($user) {
-            Mail::to($user)->send(new UserRegistered($user));
+            if (! $user->role->isAdmin()) {
+                Mail::to($user)->send(new UserRegistered($user));
+            }
         });
     }
 }

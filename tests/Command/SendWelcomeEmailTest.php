@@ -13,9 +13,11 @@ class SendWelcomeEmailTest extends TestCase
     {
         Mail::fake();
         $users = factory(User::class, 5)->create();
+        factory(User::class, 2)->states('admin')->create();
 
         $this->artisan('emails:welcome');
 
+        Mail::assertSent(UserRegistered::class, 5);
         $users->each(function ($user) {
             Mail::assertSent(UserRegistered::class, function ($mail) use ($user) {
                 return $mail->hasTo($user->email) && $mail->user->email === $user->email;
