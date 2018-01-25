@@ -1,5 +1,4 @@
 @component('mail::message')
-
 # Hello {{ $user->name }},
 
 You just finished the **first step** to be part of Hacktivate.

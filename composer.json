@@ -6,6 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "eduardokum/laravel-mail-auto-embed": "^1.0",
         "fideloper/proxy": "~3.3",
         "friendsofphp/php-cs-fixer": "^2.9",
         "guzzlehttp/guzzle": "^6.3",

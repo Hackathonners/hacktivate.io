@@ -1,7 +1,7 @@
 <tr>
     <td class="header">
-        <a href="{{ $url }}">
-            <img class="logo" src="{{ asset('images/hacktivate-logo.svg') }}" alt="Hacktivate">
+        <a href="{{ $url }}" class="logo">
+            {{ config('app.name') }}
         </a>
     </td>
 </tr>
