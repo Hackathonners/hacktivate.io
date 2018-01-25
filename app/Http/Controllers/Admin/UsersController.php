@@ -25,12 +25,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        $usersWithCompleteApplication = $users->filter(function ($value, $key) {
-            return $value->hasCompleteApplication();
-        });
-        $usersWithoutCompleteApplication = $users->diff($usersWithCompleteApplication);
+        $users = User::latest()->paginate();
 
-        return view('admin.users.index', compact('usersWithCompleteApplication', 'usersWithoutCompleteApplication'));
+        return view('admin.users.index', compact('users'));
     }
 }
