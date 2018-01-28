@@ -9,7 +9,6 @@ try {
     window.Popper = require('popper.js/dist/umd/popper');
 
     require('bootstrap');
-    window.mask = require('inputmask');
 } catch (e) {}
 
 /**

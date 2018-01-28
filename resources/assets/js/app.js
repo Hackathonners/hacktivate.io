@@ -9,11 +9,6 @@ import vClickOutside from 'v-click-outside'
 
 require('./bootstrap');
 
-// Setup jQuery plugins
-$(document).ready(function () {
-    window.mask({'mask': '99/99/9999', placeholder: 'dd/mm/yyyy'}).mask($('.js-date'));
-});
-
 window.Vue = require('vue');
 
 /**
