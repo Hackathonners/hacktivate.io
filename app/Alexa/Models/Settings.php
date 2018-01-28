@@ -16,6 +16,14 @@ class Settings extends Model
         'applications_end_at',
         'min_team_members',
         'max_team_members',
+        'factor_followers',
+        'factor_gists',
+        'factor_number_repositories',
+        'factor_repository_contributions',
+        'factor_repository_stars',
+        'factor_repository_watchers',
+        'factor_repository_forks',
+        'factor_repository_size',
     ];
 
     /**

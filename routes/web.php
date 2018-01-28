@@ -34,7 +34,9 @@ Route::resource('users', 'UsersController')->only('index', 'show');
 /*
  * Teams routes.
  */
-Route::resource('teams', 'TeamsController')->only('create', 'store', 'edit', 'update', 'destroy');
+Route::get('/teams/rankings', 'Admin\TeamsRankingsController@index')->name('teams.rankings.index');
+Route::get('/teams/rankings/refresh', 'Admin\TeamsRankingsController@refresh')->name('teams.rankings.refresh');
+Route::resource('teams', 'TeamsController')->only('', 'create', 'store', 'edit', 'update', 'destroy');
 Route::resource('teams/{id}/members', 'TeamMembersController')->only('index', 'store', 'destroy');
 
 /*
