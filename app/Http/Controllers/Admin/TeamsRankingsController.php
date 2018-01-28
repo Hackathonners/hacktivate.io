@@ -26,17 +26,22 @@ class TeamsRankingsController extends Controller
      */
     public function index($useCache = true)
     {
-        $score = new ScoreTeam();
-        $teams = Team::all();
-        $rankedTeams = collect([]);
+        $rankedTeams = DB::transaction(function () use ($useCache) {
+            $score = new ScoreTeam();
+            $teams = Team::all();
+            $rankedTeams = collect([]);
 
-        foreach ($teams as $team) {
-            $rankedTeams->push([
-              'id' => $team->id,
-              'name' => $team->name,
-              'members' => $team->users()->count(),
-          ]);
-        }
+            foreach ($teams as $team) {
+                $rankedTeams->push([
+                    'id' => $team->id,
+                    'name' => $team->name,
+                    'members' => $team->users()->count(),
+                    'rank' => ScoreTeam::getTeamScore($team),
+                ]);
+            }
+
+            return $rankedTeams;
+        });
 
         $rankedTeams = $rankedTeams->sortByDesc('score');
 

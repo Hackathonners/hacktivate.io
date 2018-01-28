@@ -12,11 +12,6 @@ use App\Exceptions\GithubHandlerException;
 
 class ScoreTeam
 {
-    public function __construct()
-    {
-        //
-    }
-
     /**
      * Get the score of this team.
      *
@@ -25,7 +20,7 @@ class ScoreTeam
      *
      * @return int
      */
-    public function getTeamScore(Team $team, $useCache = true)
+    public static function getTeamScore(Team $team, $useCache = true)
     {
         if ($useCache && Cache::has('team-'.$team->id)) {
             return Cache::get('team-'.$team->id);
@@ -35,7 +30,7 @@ class ScoreTeam
         $score = 0;
 
         foreach ($members as $member) {
-            $score += $this->getUserScore($member, $useCache);
+            $score += self::getUserScore($member, $useCache);
         }
 
         // Update cache
@@ -53,7 +48,7 @@ class ScoreTeam
      *
      * @return int
      */
-    private function getUserScore(User $user, $useCache = true)
+    public static function getUserScore(User $user, $useCache = true)
     {
         if ($useCache && Cache::has('user-'.$user->id)) {
             return Cache::get('user-'.$user->id);
@@ -71,14 +66,14 @@ class ScoreTeam
         $followers = $userInfo['followers'] * app('settings')->factor_followers;
 
         // Get user score
-        $total = $this->getGithubScore($userInfo);
+        $total = self::getGithubScore($userInfo);
 
         // Get organizations info
         $organizations = collect(GitHub::user()->organizations($user->github));
 
         // Get organizations score
         $total = $organizations->reduce(function ($carry, $item) use ($total) {
-            return $carry + $this->getGithubScore($item);
+            return $carry + self::getGithubScore($item);
         }, $total);
 
         // Calculate final score
@@ -98,7 +93,7 @@ class ScoreTeam
      *
      * @return int
      */
-    private function getGithubScore($user)
+    private static function getGithubScore($user)
     {
         // Get info about the user
         $userName = $user['login'];
@@ -122,7 +117,7 @@ class ScoreTeam
                 $name = $item['name'];
                 $owner = $item['owner']['login'];
 
-                $contributions = $this->getGithubRepositoryContributions($owner, $name, $userName);
+                $contributions = self::getGithubRepositoryContributions($owner, $name, $userName);
                 $contributions *= app('settings')->factor_repository_contributions;
 
                 return $carry + $watchers + $forks + $size + $stars + $contributions;
@@ -141,7 +136,7 @@ class ScoreTeam
      *
      * @return int
      */
-    private function getGithubRepositoryContributions(string $owner, string $name, string $user)
+    private static function getGithubRepositoryContributions(string $owner, string $name, string $user)
     {
         $contributors = Github::repo()->contributors($owner, $name, false);
         $contributions = $contributors->reduce(function ($carry, $item) use ($user) {
