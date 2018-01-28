@@ -55,6 +55,40 @@ class GithubAuthenticationTest extends TestCase
         $this->assertEquals(Role::ROLE_USER, $user->role->type);
     }
 
+    public function test_nickname_is_used_when_user_does_not_have_a_name()
+    {
+        Mail::fake();
+        $this->withoutExceptionHandling();
+        $githubUser = new \Laravel\Socialite\Two\User();
+        $githubUser->map([
+            'email' => 'hi@francisconeves.me',
+            'nickname' => 'fntneves',
+            'user' => [
+                'avatar_url' => 'https://avatar.fake',
+                'location' => 'Guimarães, Portugal',
+            ],
+        ]);
+
+        // Mock Socialite to return mocked user on callback.
+        $this->mockSocialiteFacade($githubUser);
+
+        // Call login callback.
+        $response = $this->get($this->callbackUri);
+
+        // Assert that user has been created and match Github's mocked data.
+        Mail::assertSent(UserRegistered::class, function ($mail) use ($githubUser) {
+            return $mail->hasTo($githubUser->email) && $mail->user->email === $githubUser->email;
+        });
+        $response->assertRedirect(route('home'));
+        $this->assertEquals(1, User::count());
+        $user = User::first();
+        $this->assertEquals($githubUser->nickname, $user->name);
+        $this->assertEquals($githubUser->email, $user->email);
+        $this->assertEquals($githubUser->nickname, $user->github);
+        $this->assertEquals($githubUser->user['avatar_url'], $user->avatar);
+        $this->assertEquals(Role::ROLE_USER, $user->role->type);
+    }
+
     public function test_no_user_is_updated_when_login_exists()
     {
         Mail::fake();

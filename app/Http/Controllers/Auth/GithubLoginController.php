@@ -93,7 +93,7 @@ class GithubLoginController extends Controller
                 ->firstOrNew([]);
 
             $user->fill([
-                'name' => $socialiteUser->getName(),
+                'name' => $socialiteUser->getName() ?? $socialiteUser->getNickname(),
                 'email' => $socialiteUser->getEmail(),
                 'github' => $socialiteUser->getNickname(),
                 'avatar' => $socialiteUser->getAvatar(),
