@@ -47,7 +47,7 @@
 
                     <div class="form-group mb-4">
                         <label for="birthdate">Birthdate</label>
-                        <input id="birthdate" type="date" class="form-control {{ $errors->has('birthdate') ? 'is-invalid' : '' }}" name="birthdate" value="{{ old('birthdate', $user->birthdate) }}" required>
+                        <input id="birthdate" type="text" placeholder="dd/mm/yyyy" class="form-control js-date {{ $errors->has('birthdate') ? 'is-invalid' : '' }}" name="birthdate" value="{{ old('birthdate', $user->birthdate) }}" required>
 
                         @if ($errors->has('birthdate'))
                             <span class="invalid-feedback">
