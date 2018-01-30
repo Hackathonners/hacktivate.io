@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Alexa\Models\Team;
 use App\Alexa\Score\ScoreTeam;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-
+use App\Http\Controllers\Controller;
 
 class TeamsRankingsController extends Controller
 {

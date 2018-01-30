@@ -4,6 +4,7 @@ namespace App\Alexa\Score;
 
 use Carbon\Carbon;
 use App\Alexa\Models\Team;
+
 use App\Alexa\Models\User;
 use Illuminate\Support\Facades\Cache;
 
@@ -41,7 +42,7 @@ class ScoreTeam
     }
 
     /**
-     * Get the score of this team.
+     * Get the score of this user.
      *
      * @param $user App\Alexa\Models\User
      * @param $useCache boolean
@@ -54,6 +55,8 @@ class ScoreTeam
             return Cache::get('user-'.$user->id);
         }
 
+        $total = 0;
+
         // Get the github user
         $userInfo = GitHub::user()->show($user->github);
 
@@ -65,19 +68,21 @@ class ScoreTeam
         $publicGists = $userInfo['public_gists'] * app('settings')->factor_gists;
         $followers = $userInfo['followers'] * app('settings')->factor_followers;
 
-        // Get user score
-        $total = self::getGithubScore($userInfo);
+        // Get user contributions in his own github
+        if ($publicRepos > 0) {
+            $total = self::getGithubUserContributions($userInfo['login'], $userInfo['login']);
+        }
 
         // Get organizations info
         $organizations = collect(GitHub::user()->organizations($user->github));
 
-        // Get organizations score
-        $total = $organizations->reduce(function ($carry, $item) use ($total) {
-            return $carry + self::getGithubScore($item);
+        // Get user contributions in his organizations
+        $total = $organizations->reduce(function ($carry, $organization) use ($total, $userInfo) {
+            return $carry + self::getGithubUserContributions($userInfo['login'], $organization['login']);
         }, $total);
 
         // Calculate final score
-        $score = $total + $publicRepos + $publicGists;
+        $score = $total + $publicRepos + $publicGists + $followers;
 
         // Update cache
         $expiresAt = Carbon::today()->addWeeks(1);
@@ -87,42 +92,37 @@ class ScoreTeam
     }
 
     /**
-     * Get the github score of a given user.
+     * Get the github contributions of a given user in a given user/organization.
      *
-     * @param $user array
+     * @param $user/organization string
+     * @param $contributor string
      *
      * @return int
      */
-    private static function getGithubScore($user)
+    private static function getGithubUserContributions(string $username, string $contributor)
     {
-        // Get info about the user
-        $userName = $user['login'];
-        $publicRepos = $user['public_repos'];
-        $total = 0;
+        // Get the user public repositories
+        $repos = collect(Github::user()->repositories($contributor));
 
-        // Get public repositories info
-        if ($publicRepos > 0) {
+        $total = $repos->reduce(function ($carry, $item) use ($username) {
 
-            // Get the user public repositories
-            $repos = Github::user()->repositories($userName);
+            // Calculate each parameter the with the respective factor
+            $watchers = $item['watchers_count'] * app('settings')->factor_repository_watchers;
+            $forks = $item['forks_count'] * app('settings')->factor_repository_forks;
+            $size = $item['size'] * app('settings')->factor_repository_size;
+            $stars = $item['stargazers_count'] * app('settings')->factor_repository_stars;
 
-            $total = $repos->reduce(function ($carry, $item) use ($userName) {
+            $name = $item['name'];
+            $owner = $item['owner']['login'];
 
-                // Calculate each parameter the with the respective factor
-                $watchers = $item['watchers_count'] * app('settings')->factor_repository_watchers;
-                $forks = $item['forks_count'] * app('settings')->factor_repository_forks;
-                $size = $item['size'] * app('settings')->factor_repository_size;
-                $stars = $item['stargazers_count'] * app('settings')->factor_repository_stars;
+            $contributions = 0;
+            if ($item['size'] !== 0) {
+                $contributions = self::getGithubRepositoryContributions($owner, $name, $username);
+            }
+            $contributions *= app('settings')->factor_repository_contributions;
 
-                $name = $item['name'];
-                $owner = $item['owner']['login'];
-
-                $contributions = self::getGithubRepositoryContributions($owner, $name, $userName);
-                $contributions *= app('settings')->factor_repository_contributions;
-
-                return $carry + $watchers + $forks + $size + $stars + $contributions;
-            }, 0);
-        }
+            return $carry + $watchers + $forks + $size + $stars + $contributions;
+        }, 0);
 
         return $total;
     }
@@ -138,7 +138,7 @@ class ScoreTeam
      */
     private static function getGithubRepositoryContributions(string $owner, string $name, string $user)
     {
-        $contributors = Github::repo()->contributors($owner, $name, false);
+        $contributors = collect(Github::repo()->contributors($owner, $name, false));
         $contributions = $contributors->reduce(function ($carry, $item) use ($user) {
             if ($item['login'] === $user) {
                 return $carry + $item['contributions'];

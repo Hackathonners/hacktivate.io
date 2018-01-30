@@ -4,7 +4,6 @@ namespace Tests\Unit;
 
 use Mockery as m;
 use Tests\TestCase;
-use App\Alexa\Models\Team;
 use App\Alexa\Models\User;
 use Faker\Factory as Faker;
 use App\Alexa\Score\ScoreTeam;
@@ -48,24 +47,20 @@ class ScoreTeamTest extends TestCase
             'public_gists' => 3,
             'followers' => 5,
         ];
-        $team = factory(Team::class)->create();
-        $team->users()->save($user);
         $repositories = $this->repositoriesFactory($githubHandler);
-        foreach ($repositories as $repository) {
-            $contributors = $this->contributorsFactory($userContributions);
-        }
+        $contributors = $this->contributorsFactory($userContributions);
         $organizations = [];
         $this->mockGithubFacade($userGithubInfo, $organizations, $repositories, $contributors);
-        $expectedScore = $this->calculateExpectedTeamScore($team, $userGithubInfo, collect($organizations), collect($repositories), collect($contributors));
+        $expectedScore = $this->calculateExpectedUserScore($userGithubInfo, collect($organizations), collect($repositories), collect($contributors));
 
         // Execute
-        $actualScore = $score->getTeamScore($team);
+        $actualScore = $score->getUserScore($user);
 
         // Assert
         $this->assertEquals($expectedScore, $actualScore);
     }
 
-    private function calculateExpectedTeamScore($team, $userInfo, $organizations, $repositories, $contributors)
+    private function calculateExpectedUserScore($userInfo, $organizations, $repositories, $contributors)
     {
         // Get info about the user
         $publicRepos = $userInfo['public_repos'] * app('settings')->factor_number_repositories;
@@ -73,7 +68,9 @@ class ScoreTeamTest extends TestCase
         $followers = $userInfo['followers'] * app('settings')->factor_followers;
 
         // Get user ranking
-        $total = $this->calculateUserScore($userInfo, $repositories, $contributors);
+        if ($publicRepos > 0) {
+            $total = $this->calculateUserScore($userInfo, $repositories, $contributors);
+        }
 
         // Get organizations ranking
         $total = $organizations->reduce(function ($carry, $item) use ($total) {
@@ -81,7 +78,7 @@ class ScoreTeamTest extends TestCase
         }, $total);
 
         // Calculate final ranking
-        $ranking = $total + $publicRepos + $publicGists;
+        $ranking = $total + $publicRepos + $publicGists + $followers;
 
         return $ranking;
     }
