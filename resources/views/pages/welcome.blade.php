@@ -20,6 +20,10 @@
 				<ul class="navbar-nav">
 					
 					<li class="nav-item">
+						<a href="/mentors" class="nav-link mr-2">Mentors</a>
+					</li>
+
+					<li class="nav-item">
 						<a href="{{ asset('storage/docs/coc.pdf') }}" class="nav-link mr-2">Code of conduct</a>
 					</li>
 					

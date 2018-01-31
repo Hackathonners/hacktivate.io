@@ -15,6 +15,33 @@ Route::get('/', function () {
     return view('pages.welcome');
 });
 
+Route::get('/mentors', function () {
+    $mentors = [
+        [
+            'name' => 'Rui Ribeiro',
+            'position' => 'SysAdmin',
+            'company' => 'HASLab, INESC TEC',
+            'image' => 'rribeiro',
+            'description' => 'Rui Miguel is a freelance software developer and self taught sysadmin who prefers backend development because forms are boring.
+Currently collaborating with HaSLab in a weird mix of researcher/sysadmin in the quest of creating tools and infrastructure to optimize everyday tasks via automation and integration.
+He no longer uses free time to keep working, instead, enjoys the outdoors and tries to wake up the long lost creative side.',
+        ],
+        [
+            'name' => 'Hugo Matalonga',
+            'position' => 'Freelancer Full-stack Developer',
+            'company' => '',
+            'image' => 'hmatalonga',
+            'description' => 'Hugo Matalonga is a freelancer Full-Stack Developer working for over 6+ years. Most of his late work concerns developing scalable progressive web applications.
+From very young age, he discovered the passion for programming and kept doing it ever since.
+He has a Bachelor’s degree in Computer Engineering at the University of Beira Interior.
+He is a huge enthusiastic of all things open-source and always eager to learn more news topics and technologies as much as he can.
+Besides his freelance work, he also has been part of a research project in Green Computing for the last year. Recently he has started getting into Machine Learning.',
+        ],
+    ];
+
+    return view('pages.mentors', compact('mentors'));
+});
+
 /*
  * Authentication routes.
  */
