@@ -21,6 +21,7 @@
     "dependencies": {
         "lodash.debounce": "^4.0.8",
         "v-click-outside": "^1.0.2",
-        "vue-global-events": "^1.0.2"
+        "vue-global-events": "^1.0.2",
+        "vue-masked-input": "^0.5.2"
     }
 }

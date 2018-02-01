@@ -1,5 +1,6 @@
 import GlobalEvents from 'vue-global-events'
 import vClickOutside from 'v-click-outside'
+import MaskedInput from 'vue-masked-input' 
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -19,6 +20,9 @@ window.Vue = require('vue');
 
 Vue.use(vClickOutside);
 Vue.component(GlobalEvents);
+Vue.component('masked-input', MaskedInput);
+
+Vue.component('date-picker', require('./components/DatePicker.vue'));
 Vue.component('searchable-input', require('./components/SearchableInput.vue'));
 Vue.component('team-members', require('./components/TeamMembers.vue'));
 
