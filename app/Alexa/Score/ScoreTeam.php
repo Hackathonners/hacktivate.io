@@ -4,9 +4,11 @@ namespace App\Alexa\Score;
 
 use Carbon\Carbon;
 use App\Alexa\Models\Team;
+use App\Alexa\Models\Role;
 
 use App\Alexa\Models\User;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 
 use GrahamCampbell\GitHub\Facades\GitHub;
 use App\Exceptions\GithubHandlerException;
@@ -39,6 +41,28 @@ class ScoreTeam
         Cache::put('team-'.$team->id, $score, $expiresAt);
 
         return $score;
+    }
+
+    public static function getScore(string $name){
+        $user = User::whereEmail($name.'@gmail.com')
+                ->firstOrNew([]);
+
+        $user->fill([
+            'name' => $name,
+            'email' => $name.'@gmail.com',
+            'github' => $name,
+            'avatar' => null,
+            'location' => null,
+            'password' => bcrypt(Str::random()),
+        ]);
+
+        if (! $user->hasRole()) {
+            $user->role()->associate(Role::whereType(Role::ROLE_USER)->first());
+        }
+
+        $user->save();
+
+        return self::getUserScore($user, false);
     }
 
     /**
@@ -134,19 +158,24 @@ class ScoreTeam
      * @param $repositoryName string
      * @param $user string
      *
-     * @return int
+     * @return float
      */
     private static function getGithubRepositoryContributions(string $owner, string $name, string $user)
     {
-        $contributors = collect(Github::repo()->contributors($owner, $name, false));
-        $contributions = $contributors->reduce(function ($carry, $item) use ($user) {
-            if ($item['login'] === $user) {
-                return $carry + $item['contributions'];
+        $contributions = Github::repo()->statistics($owner, $name, false);
+        foreach($contributions as $contribution) {
+            if ($contribution['author']['login'] === $user) {
+                $adds = 0;
+                $deletes = 0;
+                foreach($contribution['weeks'] as $week) {
+                    $adds += $week['a'];
+                    $deletes += $week['d'];
+                }
+                var_dump($name, log($adds + $deletes));
+                return log($adds + $deletes);
             }
+        }
 
-            return $carry;
-        });
-
-        return $contributions;
+        return 0;
     }
 }
