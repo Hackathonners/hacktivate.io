@@ -105,6 +105,23 @@ class UsersController extends Controller
             $user->save();
         });
 
-        return redirect()->route('users.edit')->with('status', 'Your profile was successfully updated.');
+        return redirect()->route('users.destroy')->with('status', 'Your profile was successfully updated.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        DB::transaction(function () use ($id) {
+            $user = auth()->user()->findOrFail($id);
+            $user->leaveCurrentTeam();
+        });
+
+        return redirect()->route('home')->with('status', 'You\'ve successfully left the team.');
     }
 }
