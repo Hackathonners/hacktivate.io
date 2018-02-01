@@ -105,7 +105,7 @@ class UsersController extends Controller
             $user->save();
         });
 
-        return redirect()->route('users.destroy')->with('status', 'Your profile was successfully updated.');
+        return redirect()->route('users.edit')->with('status', 'Your profile was successfully updated.');
     }
 
     /**
