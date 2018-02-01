@@ -42,8 +42,7 @@ Besides his freelance work, he also has been part of a research project in Green
             'position' => 'Senior Researcher',
             'company' => 'HASLab',
             'image' => 'nmachado',
-            'description' => 'Nuno Machado is a senior researcher at HASLab (INESC TEC & University of Minho), working to make large-scale distributed systems more efficient and reliable. He is convinced that one can only win the arms race against software bugs by building practical automated tools on top of sound theoretical foundations. This quest led him to do a Ph.D. in Computer Science at Instituto Superior Técnico and an internship at Microsoft Research in Redmond, during which he developed techniques to debug concurrency bugs. 
-Nuno also believes that software can and should be fun. For that reason, he has participated in several programming contests, having won the 1st prize at Microsoft Imagine Cup in 2010.',
+            'description' => 'Nuno Machado is a senior researcher at HASLab (INESC TEC & University of Minho), working to make large-scale distributed systems more efficient and reliable. He is a firm believer that software development can be both challenging and fun. The former encouraged him to do a Ph.D. in Computer Science at Instituto Superior Técnico and an internship at Microsoft Research in Redmond, during which he developed automated tools to debug concurrency bugs. The latter inspired him to participate in several programming contests, such as Microsoft Imagine Cup (won the 1st prize in 2010) and Sapo Codebits.',
         ],
     ];
 
