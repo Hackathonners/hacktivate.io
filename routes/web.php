@@ -63,6 +63,7 @@ Route::get('/profile/edit', 'UsersController@edit')->name('users.edit');
 Route::get('/profile', 'UsersController@show')->name('home');
 Route::put('/profile', 'UsersController@update')->name('users.update');
 Route::patch('/profile', 'UsersController@update')->name('users.update');
+Route::delete('/profile/{id}', 'UsersController@destroy')->name('users.destroy');
 Route::resource('users', 'UsersController')->only('index', 'show');
 
 /*
