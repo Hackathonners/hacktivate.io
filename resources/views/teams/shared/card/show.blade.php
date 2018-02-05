@@ -47,21 +47,17 @@
                 <p> Are you sure you want to leave this team? </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <span class="pull-right">
-                    {!! Form::open([
-                        'action' => [
-                        'UsersController@destroy',
-                        Auth::user()->id,
-                        ],
-                        'method' => 'delete'
-                    ]) !!}
-                    {!! Form::hidden('id', '', ['id' => Auth::user()->id]) !!}
-                    <button type="submit" class="btn btn-primary">
-                        Leave Team
-                    </button>
-                    {!! Form::close() !!}
-                </span>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
+                </button>
+                <form method="POST" action="{{ route('team.members.leave', Auth::user()->id)}}">
+                    <input name="_token" type="hidden" value="{{ csrf_token() }}">
+                    <span class="pull-right">
+
+                        <button type="submit" class="btn btn-primary">
+                            Leave Team
+                        </button>
+                    </span>
+                </form>
             </div>
         </div>
     </div>

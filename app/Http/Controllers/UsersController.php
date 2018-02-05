@@ -117,11 +117,5 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        DB::transaction(function () use ($id) {
-            $user = auth()->user()->findOrFail($id);
-            $user->leaveCurrentTeam();
-        });
-
-        return redirect()->route('home')->with('status', 'You\'ve successfully left the team.');
     }
 }
