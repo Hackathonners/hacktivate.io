@@ -87,4 +87,21 @@ class TeamMembersController extends Controller
 
         return ['message' => 'The user was successfully removed from your team.'];
     }
+
+    /**
+     * Remove a user from their team. TODO: Change this.
+     *
+     * @param  int  $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function leave($id)
+    {
+        DB::transaction(function () use ($id) {
+            $user = auth()->user()->findOrFail($id);
+            $user->leaveCurrentTeam();
+        });
+
+        return redirect()->route('home')->with('status', 'You\'ve successfully left the team.');
+    }
 }
