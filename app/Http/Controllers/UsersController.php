@@ -107,15 +107,4 @@ class UsersController extends Controller
 
         return redirect()->route('users.edit')->with('status', 'Your profile was successfully updated.');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-    }
 }
