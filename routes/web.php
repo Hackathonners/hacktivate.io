@@ -63,13 +63,13 @@ Route::get('/profile/edit', 'UsersController@edit')->name('users.edit');
 Route::get('/profile', 'UsersController@show')->name('home');
 Route::put('/profile', 'UsersController@update')->name('users.update');
 Route::patch('/profile', 'UsersController@update')->name('users.update');
-Route::post('/profile/{id}', 'TeamMembersController@leave')->name('team.members.leave');
 Route::resource('users', 'UsersController')->only('index', 'show');
 
 /*
  * Teams routes.
  */
 Route::resource('teams', 'TeamsController')->only('create', 'store', 'edit', 'update', 'destroy');
+Route::post('/teams/{id}/leave', 'TeamMembersController@leave')->name('team.members.leave');
 Route::resource('teams/{id}/members', 'TeamMembersController')->only('index', 'store', 'destroy');
 
 /*

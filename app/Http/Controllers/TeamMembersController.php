@@ -6,6 +6,7 @@ use App\Alexa\Models\Team;
 use App\Alexa\Models\User;
 use App\Exceptions\TeamException;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Rules\User\EligibleForNewTeam;
 use App\Http\Requests\TeamMember\CreateRequest;
 
@@ -89,16 +90,18 @@ class TeamMembersController extends Controller
     }
 
     /**
-     * Remove a user from their team. TODO: Change this.
+     * Remove a user from their team.
      *
      * @param  int  $id
      *
      * @return \Illuminate\Http\Response
      */
-    public function leave($id)
+    public function leave($team_id)
     {
-        DB::transaction(function () use ($id) {
-            $user = auth()->user()->findOrFail($id);
+        DB::transaction(function () use ($team_id) {
+            $user = Auth::user();
+            $team = $user->team()->findOrFail($team_id);
+
             $user->leaveCurrentTeam();
         });
 
