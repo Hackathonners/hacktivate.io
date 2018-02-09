@@ -41,17 +41,17 @@
 <div class="section">
 	<div class="container">
 		<h4 class="section-title">
-			<span>&lt; Mentors &gt;</span>
+			<span>&lt; Jurors &gt;</span>
 		</h4>
 	<div class="row grid">
-			@foreach($mentors as $mentor)
+			@foreach($jurors as $juror)
 			<div class="offset-sm-1 offset-md-0 col-sm-10 col-md-12">
 				<div class="card flex-md-row">
-			    	<img class="card-img-top" src="{{ asset('images/mentors/'.$mentor['image'].'.jpg') }}" alt="{{ $mentor['name'] }}">
+			    	<img class="card-img-top" src="{{ asset('images/jurors/'.$juror['image'].'.jpg') }}" alt="{{ $juror['name'] }}">
 				    <div class="card-body">
-				    	<h5 class="card-title mb-2">{{ $mentor['name'] }}</h5>
-				    	<h6>{{ $mentor['position'] }} {{ $mentor['company'] ? 'at '. $mentor['company'] : '' }}</h6>
-				    	<p class="card-text small">{{ $mentor['description'] }}</p>
+				    	<h5 class="card-title mb-2">{{ $juror['name'] }}</h5>
+				    	<h6>{{ $juror['position'] }} {{ $juror['company'] ? 'at '. $juror['company'] : '' }}</h6>
+				    	<p class="card-text small">{{ $juror['description'] }}</p>
 				    </div>
 				</div>
 			</div>

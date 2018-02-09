@@ -18,11 +18,12 @@
 			</button>
 			<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
 				<ul class="navbar-nav">
-					
 					<li class="nav-item">
-						<a href="/mentors" class="nav-link mr-2">Mentors</a>
+						<a href="{{ route('pages.mentors') }}" class="nav-link mr-2">Mentors</a>
 					</li>
-
+					<li class="nav-item">
+						<a href="{{ route('pages.jurors') }}" class="nav-link mr-2">Jurors</a>
+					</li>
 					<li class="nav-item">
 						<a href="{{ asset('storage/docs/coc.pdf') }}" class="nav-link mr-2">Code of conduct</a>
 					</li>
