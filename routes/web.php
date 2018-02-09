@@ -44,6 +44,13 @@ Besides his freelance work, he also has been part of a research project in Green
             'image' => 'nmachado',
             'description' => 'Nuno Machado is a senior researcher at HASLab (INESC TEC & University of Minho), working to make large-scale distributed systems more efficient and reliable. He is a firm believer that software development can be both challenging and fun. The former encouraged him to do a Ph.D. in Computer Science at Instituto Superior Técnico and an internship at Microsoft Research in Redmond, during which he developed automated tools to debug concurrency bugs. The latter inspired him to participate in several programming contests, such as Microsoft Imagine Cup (won the 1st prize in 2010) and Sapo Codebits.',
         ],
+        [
+            'name' => 'Mike Elsmore',
+            'position' => 'Developer & Community Organiser',
+            'company' => '',
+            'image' => 'melsmore',
+            'description' => 'Mike loves building, tinkering and making odd things happen with code. Using my time to share knowledge on rapid development and different databases. Most of the time he can be found in the middle of a prototype in some combination of JavaScript, server tech and odd API\'s. Mike also happens to be an active part of the hacker subculture, taking part in hackathons and development conferences. As well as running his own.',
+        ],
     ];
 
     return view('pages.mentors', compact('mentors'));
