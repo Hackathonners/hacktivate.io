@@ -39,7 +39,7 @@ class Feedback extends Mailable
     {
         $user = $this->user;
 
-        return $this->subject('Thank you for being part of Hacktivate!')
+        return $this->subject('Thank you for being part of the Hacktivate 💻')
             ->markdown('emails.feedback', compact('user'));
     }
 }
