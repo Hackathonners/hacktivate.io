@@ -35,6 +35,7 @@ Route::resource('users', 'UsersController')->only('index', 'show');
  * Teams routes.
  */
 Route::resource('teams', 'TeamsController')->only('create', 'store', 'edit', 'update', 'destroy');
+Route::post('/teams/{id}/leave', 'TeamMembersController@leave')->name('team.members.leave');
 Route::resource('teams/{id}/members', 'TeamMembersController')->only('index', 'store', 'destroy');
 
 /*

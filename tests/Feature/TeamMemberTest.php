@@ -111,4 +111,35 @@ class TeamMemberTest extends TestCase
         $team->refresh();
         $this->assertTrue($team->users()->whereGithub($member->github)->exists());
     }
+
+    public function test_user_can_remove_himself_from_his_team()
+    {
+        $team = factory(Team::class)->create();
+        $member = factory(User::class)->create(['team_id' => $team->id]);
+        $requestData = ['github' => $member->github];
+
+        $response = $this->actingAs($member)
+            ->post(route('team.members.leave',
+                $team->id
+            ), $requestData);
+
+        $response->assertRedirect(route('home'));
+        $team->refresh();
+        $this->assertFalse($team->users()->whereGithub($member->github)->exists());
+    }
+
+    public function test_user_cannot_remove_himself_from_no_belonging_team()
+    {
+        $team = factory(Team::class)->create();
+        $member = factory(User::class)->create();
+        $requestData = ['github' => $member->github];
+
+        $response = $this->actingAs($member)
+            ->post(route('team.members.leave',
+                $team->id
+            ), $requestData);
+
+        $response->assertRedirect(route('home'));
+        $this->assertFalse($member->hasTeam());
+    }
 }

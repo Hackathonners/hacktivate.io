@@ -6,6 +6,7 @@ use App\Alexa\Models\Team;
 use App\Alexa\Models\User;
 use App\Exceptions\TeamException;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Rules\User\EligibleForNewTeam;
 use App\Http\Requests\TeamMember\CreateRequest;
 
@@ -86,5 +87,24 @@ class TeamMembersController extends Controller
         });
 
         return ['message' => 'The user was successfully removed from your team.'];
+    }
+
+    /**
+     * Remove a user from their team.
+     *
+     * @param  int  $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function leave($team_id)
+    {
+        DB::transaction(function () use ($team_id) {
+            $user = Auth::user();
+            $team = $user->team()->findOrFail($team_id);
+
+            $user->leaveCurrentTeam();
+        });
+
+        return redirect()->route('home')->with('status', 'You\'ve successfully left the team.');
     }
 }
