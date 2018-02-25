@@ -23,6 +23,11 @@ Route::get('login/github/callback', 'Auth\GithubLoginController@handleProviderCa
 Route::post('logout', 'Auth\GithubLoginController@logout')->name('logout');
 
 /*
+ * Admin routes.
+ */
+Route::get('/admin/users', 'Admin\UsersController@index')->name('admin.users.index');
+
+/*
  * Users routes.
  */
 Route::get('/profile/edit', 'UsersController@edit')->name('users.edit');
@@ -30,7 +35,6 @@ Route::get('/profile', 'UsersController@show')->name('home');
 Route::put('/profile', 'UsersController@update')->name('users.update');
 Route::patch('/profile', 'UsersController@update')->name('users.update');
 Route::resource('users', 'UsersController')->only('index', 'show');
-
 /*
  * Teams routes.
  */

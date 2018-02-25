@@ -17,6 +17,7 @@ class UsersTableSeeder extends Seeder
         $admins = [
             'diogo2couto@gmail.com',
             'fntneves@gmail.com',
+            'hugo.b.brandao@gmail.com',
         ];
 
         $adminRole = Role::whereType(Role::ROLE_ADMINISTRATOR)->first();
