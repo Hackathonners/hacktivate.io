@@ -28,11 +28,28 @@ class SettingsTest extends TestCase
         $applicationsEnd = Carbon::tomorrow()->addDays(1);
         $minTeamMembers = 1;
         $maxTeamMembers = 5;
+        $factorFollowers = 1;
+        $factorGists = 2;
+        $factorNumberRepositories = 3;
+        $factorRepositoryContributions = 4;
+        $factorRepositoryStars = 5;
+        $factorRepositoryWatchers = 6;
+        $factorRepositoryForks = 7;
+        $factorRepositorySize = 8;
+
         $requestData = [
             'applications_start_at' => $applicationsStart,
             'applications_end_at' => $applicationsEnd,
             'min_team_members' => $minTeamMembers,
             'max_team_members' => $maxTeamMembers,
+            'factor_followers' => $factorFollowers,
+            'factor_gists' => $factorGists,
+            'factor_number_repositories' => $factorNumberRepositories,
+            'factor_repository_contributions' => $factorRepositoryContributions,
+            'factor_repository_stars' => $factorRepositoryStars,
+            'factor_repository_watchers' => $factorRepositoryWatchers,
+            'factor_repository_forks' => $factorRepositoryForks,
+            'factor_repository_size' => $factorRepositorySize,
         ];
 
         $response = $this->actingAs($this->admin)
@@ -45,6 +62,14 @@ class SettingsTest extends TestCase
         $this->assertEquals($applicationsEnd, $this->settings->applications_end_at);
         $this->assertEquals($minTeamMembers, $this->settings->min_team_members);
         $this->assertEquals($maxTeamMembers, $this->settings->max_team_members);
+        $this->assertEquals($factorFollowers, $this->settings->factor_followers);
+        $this->assertEquals($factorGists, $this->settings->factor_gists);
+        $this->assertEquals($factorNumberRepositories, $this->settings->factor_number_repositories);
+        $this->assertEquals($factorRepositoryContributions, $this->settings->factor_repository_contributions);
+        $this->assertEquals($factorRepositoryStars, $this->settings->factor_repository_stars);
+        $this->assertEquals($factorRepositoryWatchers, $this->settings->factor_repository_watchers);
+        $this->assertEquals($factorRepositoryForks, $this->settings->factor_repository_forks);
+        $this->assertEquals($factorRepositorySize, $this->settings->factor_repository_size);
     }
 
     public function test_settings_may_not_be_updated_with_an_invalid_projects_submission_period()
@@ -53,11 +78,27 @@ class SettingsTest extends TestCase
         $applicationsEnd = Carbon::tomorrow();
         $minTeamMembers = 1;
         $maxTeamMembers = 5;
+        $factorFollowers = 1;
+        $factorGists = 2;
+        $factorNumberRepositories = 3;
+        $factorRepositoryContributions = 4;
+        $factorRepositoryStars = 5;
+        $factorRepositoryWatchers = 6;
+        $factorRepositoryForks = 7;
+        $factorRepositorySize = 8;
         $requestData = [
             'applications_start_at' => $applicationsStart,
             'applications_end_at' => $applicationsEnd,
             'min_team_members' => $minTeamMembers,
             'max_team_members' => $maxTeamMembers,
+            'factor_followers' => $factorFollowers,
+            'factor_gists' => $factorGists,
+            'factor_number_repositories' => $factorNumberRepositories,
+            'factor_repository_contributions' => $factorRepositoryContributions,
+            'factor_repository_stars' => $factorRepositoryStars,
+            'factor_repository_watchers' => $factorRepositoryWatchers,
+            'factor_repository_forks' => $factorRepositoryForks,
+            'factor_repository_size' => $factorRepositorySize,
         ];
 
         $response = $this->actingAs($this->admin)
@@ -74,11 +115,27 @@ class SettingsTest extends TestCase
         $applicationsEnd = Carbon::tomorrow()->addDays(1);
         $minTeamMembers = 5;
         $maxTeamMembers = 2;
+        $factorFollowers = 1;
+        $factorGists = 2;
+        $factorNumberRepositories = 3;
+        $factorRepositoryContributions = 4;
+        $factorRepositoryStars = 5;
+        $factorRepositoryWatchers = 6;
+        $factorRepositoryForks = 7;
+        $factorRepositorySize = 8;
         $requestData = [
             'applications_start_at' => $applicationsStart,
             'applications_end_at' => $applicationsEnd,
             'min_team_members' => $minTeamMembers,
             'max_team_members' => $maxTeamMembers,
+            'factor_followers' => $factorFollowers,
+            'factor_gists' => $factorGists,
+            'factor_number_repositories' => $factorNumberRepositories,
+            'factor_repository_contributions' => $factorRepositoryContributions,
+            'factor_repository_stars' => $factorRepositoryStars,
+            'factor_repository_watchers' => $factorRepositoryWatchers,
+            'factor_repository_forks' => $factorRepositoryForks,
+            'factor_repository_size' => $factorRepositorySize,
         ];
 
         $response = $this->actingAs($this->admin)
@@ -106,11 +163,27 @@ class SettingsTest extends TestCase
         $applicationsEnd = Carbon::tomorrow()->addDays(1);
         $minTeamMembers = 5;
         $maxTeamMembers = 2;
+        $factorFollowers = 1;
+        $factorGists = 2;
+        $factorNumberRepositories = 3;
+        $factorRepositoryContributions = 4;
+        $factorRepositoryStars = 5;
+        $factorRepositoryWatchers = 6;
+        $factorRepositoryForks = 7;
+        $factorRepositorySize = 8;
         $requestData = [
             'applications_start_at' => $applicationsStart,
             'applications_end_at' => $applicationsEnd,
             'min_team_members' => $minTeamMembers,
             'max_team_members' => $maxTeamMembers,
+            'factor_followers' => $factorFollowers,
+            'factor_gists' => $factorGists,
+            'factor_number_repositories' => $factorNumberRepositories,
+            'factor_repository_contributions' => $factorRepositoryContributions,
+            'factor_repository_stars' => $factorRepositoryStars,
+            'factor_repository_watchers' => $factorRepositoryWatchers,
+            'factor_repository_forks' => $factorRepositoryForks,
+            'factor_repository_size' => $factorRepositorySize,
         ];
 
         $response = $this->actingAs($user)
@@ -126,11 +199,27 @@ class SettingsTest extends TestCase
         $applicationsEnd = Carbon::tomorrow()->addDays(1);
         $minTeamMembers = 5;
         $maxTeamMembers = 2;
+        $factorFollowers = 1;
+        $factorGists = 2;
+        $factorNumberRepositories = 3;
+        $factorRepositoryContributions = 4;
+        $factorRepositoryStars = 5;
+        $factorRepositoryWatchers = 6;
+        $factorRepositoryForks = 7;
+        $factorRepositorySize = 8;
         $requestData = [
             'applications_start_at' => $applicationsStart,
             'applications_end_at' => $applicationsEnd,
             'min_team_members' => $minTeamMembers,
             'max_team_members' => $maxTeamMembers,
+            'factor_followers' => $factorFollowers,
+            'factor_gists' => $factorGists,
+            'factor_number_repositories' => $factorNumberRepositories,
+            'factor_repository_contributions' => $factorRepositoryContributions,
+            'factor_repository_stars' => $factorRepositoryStars,
+            'factor_repository_watchers' => $factorRepositoryWatchers,
+            'factor_repository_forks' => $factorRepositoryForks,
+            'factor_repository_size' => $factorRepositorySize,
         ];
 
         $response = $this->put(route('settings.update'), $requestData);
@@ -149,5 +238,13 @@ class SettingsTest extends TestCase
         $this->assertEquals($this->settings->applications_end_at, $actualSettings->applications_end_at);
         $this->assertEquals($this->settings->min_team_members, $actualSettings->min_team_members);
         $this->assertEquals($this->settings->max_team_members, $actualSettings->max_team_members);
+        $this->assertEquals($this->settings->factor_followers, $actualSettings->factor_followers);
+        $this->assertEquals($this->settings->factor_gists, $actualSettings->factor_gists);
+        $this->assertEquals($this->settings->factor_number_repositories, $actualSettings->factor_number_repositories);
+        $this->assertEquals($this->settings->factor_repository_contributions, $actualSettings->factor_repository_contributions);
+        $this->assertEquals($this->settings->factor_repository_stars, $actualSettings->factor_repository_stars);
+        $this->assertEquals($this->settings->factor_repository_watchers, $actualSettings->factor_repository_watchers);
+        $this->assertEquals($this->settings->factor_repository_forks, $actualSettings->factor_repository_forks);
+        $this->assertEquals($this->settings->factor_repository_size, $actualSettings->factor_repository_size);
     }
 }

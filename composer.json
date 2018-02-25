@@ -10,9 +10,11 @@
         "fideloper/proxy": "~3.3",
         "friendsofphp/php-cs-fixer": "^2.9",
         "guzzlehttp/guzzle": "^6.3",
+        "graham-campbell/github": "^6.2",
         "laravel/framework": "5.5.*",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
+        "php-http/guzzle6-adapter": "^1.1",
         "sentry/sentry-laravel": "^0.8.0"
     },
     "require-dev": {
