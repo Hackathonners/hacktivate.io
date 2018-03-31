@@ -41,8 +41,8 @@
                     <h5 class="text-primary mb-2">Application details</h5>
                     <div class="form-group">
                         <label for="applications_start_at">Applications submission start time</label>
-                        <input id="applications_start_at" type="datetime-local" class="form-control {{ $errors->has('applications_start_at') ? 'is-invalid' : '' }}" name="applications_start_at" value="{{ old('applications_start_at', $settings->applications_start_at ? $settings->applications_start_at->format('Y-m-d\Th:i') : '') }}" required autofocus>
-            
+                        <date-picker id="applications_start_at" type="text" class="form-control {{ $errors->has('applications_start_at') ? 'is-invalid' : '' }}" name="applications_start_at" value="{{ old('applications_start_at', $settings->applications_start_at) }}" required>
+
                         @if ($errors->has('applications_start_at'))
                             <span class="invalid-feedback">
                                 <strong>{{ $errors->first('applications_start_at') }}</strong>
@@ -52,7 +52,7 @@
 
                     <div class="form-group">
                         <label for="applications_end_at">Applications submission end time</label>
-                        <input id="applications_end_at" type="datetime-local" class="form-control {{ $errors->has('applications_end_at') ? 'is-invalid' : '' }}" name="applications_end_at" value="{{ old('applications_end_at', $settings->applications_end_at ? $settings->applications_end_at->format('Y-m-d\Th:i') : '') }}" required autofocus>
+                        <date-picker id="applications_end_at" type="text" class="form-control {{ $errors->has('applications_end_at') ? 'is-invalid' : '' }}" name="applications_end_at" value="{{ old('applications_end_at', $settings->applications_end_at) }}" required>
 
                         @if ($errors->has('applications_end_at'))
                             <span class="invalid-feedback">
